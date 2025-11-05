@@ -21,4 +21,10 @@ class ArtikelTable extends Component
             })->paginate(10);
         return view('livewire.artikel-table', compact('artikels'))->layout('layouts.app');
     }
+
+    public function destroy(Artikel $artikel)
+    {
+        $artikel->delete();
+        session()->flash('success', 'Artikel berhasil di hapus');
+    }
 }

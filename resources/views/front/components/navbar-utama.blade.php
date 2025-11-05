@@ -118,7 +118,7 @@
             </button>
             <!-- Alert text -->
             <a href="/">
-                <p class="ml-5 text-sm px-5 items-center">
+                <p class="ml-3 text-sm px-5 items-center">
                     ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
                 </p>
             </a>
@@ -129,7 +129,7 @@
             x-transition:enter-start="-translate-x-1/2 opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transition-all transform ease-in" x-transition:leave-start="translate-x-0 opacity-100"
             x-transition:leave-end="-translate-x-1/2 opacity-0" @click.away="open = false"
-            class="fixed md:hidden inset-0 z-50 bg-red-600 text-white flex flex-col p-6 space-y-5 w-[400px]"
+            class="fixed md:hidden inset-0 z-50 bg-red-600 text-white flex flex-col p-6 space-y-5 w-[75vw]"
             style="display: none;">
             <!-- Close button -->
             <button @click="open = false" class="self-start mb-10">
@@ -191,7 +191,7 @@
 
                 <!-- Search -->
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
-                    class="relative w-full max-w-xs ml-4 mt-5">
+                    class="relative w-full max-w-xs mt-5">
                     <form x-ref="form" action="" method="get" class="flex items-center border-b border-gray-300 w-full">
                         <input type="text" name="search" x-model="search" x-on:input="
                                 loading = true;
