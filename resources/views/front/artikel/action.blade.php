@@ -3,7 +3,7 @@
 @section('content')
 <div>
     {{-- image --}}
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-5 md:mt-20 mt-38">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-5 md:mt-20 mt-20">
     @foreach ($actions as $action)
     @php
     $translation = $action->translations->first();
