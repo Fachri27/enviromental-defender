@@ -2,13 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SchemaHelper;
 use App\Models\Artikel;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 
-
 class ArtikelController extends Controller
 {
+    public function show(Resource $resource)
+    {
+        $locale = app()->getLocale();
+
+        // ambil data SEO otomatis dari model
+        $meta = $resource->getSeoData($locale);
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            $resource->author->name ?? 'Environmental Defender',
+        );
+
+        return view('front.home', compact('resource', 'schema'));
+    }
+
     public function indexHome(Request $request, $locale)
     {
         $search = $request->input('search');
@@ -16,9 +39,9 @@ class ArtikelController extends Controller
             $query->where('locale', $locale);
         }])
             ->when($search, function ($query, $search) use ($locale) {
-                $query->whereHas('translations', function($q) use ($locale, $search) {
+                $query->whereHas('translations', function ($q) use ($locale, $search) {
                     $q->where('locale', $locale)
-                        ->where(function($q2) use ($search){
+                        ->where(function ($q2) use ($search) {
                             $q2->where('title', 'like', "%{$search}%");
                         });
                 });
@@ -29,24 +52,21 @@ class ArtikelController extends Controller
             $query->where('locale', $locale);
         }])
             ->when($search, function ($query, $search) use ($locale) {
-                $query->whereHas('translations', function($q) use ($locale, $search) {
+                $query->whereHas('translations', function ($q) use ($locale, $search) {
                     $q->where('locale', $locale)
-                        ->where(function($q2) use ($search){
+                        ->where(function ($q2) use ($search) {
                             $q2->where('title', 'like', "%{$search}%");
                         });
                 });
             })
             ->where('status', 'publish');
 
-        
         $databases = Resource::with(['translations' => function ($query) use ($locale) {
             $query->where('locale', $locale);
         }])
             ->where('type', 'database')
             ->where('status', 'publish')
             ->get();
-
-        
 
         // Ambil 1 artikel terbaru per type
         $action = (clone $baseQuery)->where('type', 'action')->latest('published_at')->first();
@@ -65,7 +85,28 @@ class ArtikelController extends Controller
             ->where('type', 'case')
             ->get();
 
-        return view('front.artikel.cases', compact('cases', 'locale'));
+        // Title & description manual (karena ini bukan 1 artikel)
+        $meta = [
+            'title' => __('Cases'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
+
+        return view('front.artikel.cases', compact('cases', 'locale', 'schema'));
     }
 
     public function showAction($locale)
@@ -77,7 +118,28 @@ class ArtikelController extends Controller
             ->where('type', 'action')
             ->get();
 
-        return view('front.artikel.action', compact('actions', 'locale'));
+        // Title & description manual (karena ini bukan 1 artikel)
+        $meta = [
+            'title' => __('Actions'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
+
+        return view('front.artikel.action', compact('actions', 'locale', 'schema'));
     }
 
     public function showAlerta($locale)
@@ -88,6 +150,27 @@ class ArtikelController extends Controller
             ->where('status', 'publish')
             ->where('type', 'alerta')
             ->get();
+
+        // Title & description manual (karena ini bukan 1 artikel)
+        $meta = [
+            'title' => __('Alerta'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
 
         return view('front.artikel.alerta', compact('alerta', 'locale'));
     }
@@ -100,14 +183,28 @@ class ArtikelController extends Controller
             ->where('slug', $slug)
             ->where('status', 'publish')
             ->firstOrFail();
-    
-        if($artikel->type === 'action') {
+
+        // ambil data SEO otomatis dari model
+        $meta = $artikel->getSeoData($locale);
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            $artikel->author->name ?? 'Environmental Defender',
+        );
+
+        if ($artikel->type === 'action') {
             return view('front.artikel.page-action', compact('artikel'));
-        } 
-        elseif ($artikel->type === 'case') {
+        } elseif ($artikel->type === 'case') {
             return view('front.artikel.page-case', compact('artikel'));
-        }
-        else {
+        } else {
             return view('front.artikel.page-alerta', compact('artikel'));
         }
     }

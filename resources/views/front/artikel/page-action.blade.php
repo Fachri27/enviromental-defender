@@ -28,7 +28,7 @@
             {!! $translation->deskripsi !!}
         </div>
     </header>
-</main>
+</main> 
 {{-- Isi Artikel --}}
 <article class="prose prose-lg prose-slate md:prose-lg leading-relaxed text-justify md:text-left max-w-4xl mx-auto px-5 md:px-0">
     {!! $translation?->content !!}

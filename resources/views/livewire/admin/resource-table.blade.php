@@ -1,10 +1,4 @@
 <div class="flex flex-col justify-center items-center mt-20">
-    {{-- Notifikasi sukses --}}
-    @if (session('success'))
-    <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-2 rounded-lg mb-4">
-        {{ session('success') }}
-    </div>
-    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Data Resource') }}

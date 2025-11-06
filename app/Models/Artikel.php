@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Artikel extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    use HasSeoMeta;
 
     protected $fillable = [
         'slug',

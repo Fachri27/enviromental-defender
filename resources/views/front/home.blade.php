@@ -42,7 +42,7 @@
                 </span>
                 -
                 <span>
-                    {{ \Carbon\Carbon::parse($resource->start_date)->translatedFormat('d F Y') }}
+                    {{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat('F Y') }}
                 </span>
                 )
             </h2>
@@ -56,7 +56,7 @@
                 class="w-full h-[500px] sm:h-[550px]"
             ></iframe>
 
-            <div class="max-w-4xl mx-auto px-6 py-6 text-gray-700 text-sm sm:text-base leading-relaxed prose">
+            <div class="max-w-4xl mx-auto px-6 py-6 text-gray-700 text-sm sm:text-base leading-relaxed prose md:text-left text-justify">
                 {!! $translation->deskripsi !!}
             </div>
         </section>
@@ -70,7 +70,7 @@
                     </span>
                     -
                     <span>
-                        {{ \Carbon\Carbon::parse($resource->start_date)->translatedFormat('d F Y') }}
+                        {{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat('F Y') }}
                     </span>
             </h2>
 
@@ -84,7 +84,7 @@
                 ></iframe>
             </div>
 
-            <div class="max-w-4xl mx-auto text-gray-700 text-sm sm:text-base leading-relaxed prose">
+            <div class="max-w-4xl mx-auto text-gray-700 text-sm sm:text-base leading-relaxed prose md:text-left text-justify">
                 {!! $translation->deskripsi !!}
             </div>
         </section>

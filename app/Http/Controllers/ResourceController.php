@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SchemaHelper;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 
@@ -27,19 +28,61 @@ class ResourceController extends Controller
             ->where('type', 'database')
             ->where('status', 'publish')
             ->get();
+        
+        // Title & description manual (karena ini bukan 1 artikel)
+        $meta = [
+            'title' => __('Resources'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
 
-        return view('front.resources.database', compact('resources', 'locale'));
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
+
+        return view('front.resources.database', compact('resources', 'locale', 'schema'));
     }
 
     public function showReport($locale)
     {
-        $resources = Resource::with(['translations' => function ($query) use ($locale) {
+        $resource = Resource::with(['translations' => function ($query) use ($locale) {
             $query->where('locale', $locale);
         }])
             ->where('type', 'report')
             ->where('status', 'publish')
             ->get();
 
-        return view('front.resources.report', compact('resources', 'locale'));
+        // Title & description manual (karena ini bukan 1 artikel)
+        $meta = [
+            'title' => __('Resources'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
+
+        return view('front.resources.report', compact('resource', 'locale', 'schema'));
     }
 }
