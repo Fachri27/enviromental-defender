@@ -49,8 +49,8 @@ class ArtikelController extends Controller
         $meta = [
             'title' => __('Enviromental Defender'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
-            'type' => 'article',
+            'image' => asset('images/new3.png'),
+            'type' => 'website',
         ];
 
         seo()->setLocale($locale)
