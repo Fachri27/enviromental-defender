@@ -8,6 +8,7 @@ use Livewire\Component;
 class ArtikelTable extends Component
 {
     public $search;
+    public $type;
     public $status;
     public function render()
     {
@@ -18,7 +19,10 @@ class ArtikelTable extends Component
                 if($this->status && $this->status !== 'all') {
                     $query->where('status', $this->status);
                 }
-            })->paginate(10);
+                if($this->type && $this->type !== 'type') {
+                    $query->where('type', $this->type);
+                }
+            })->paginate(5);
         return view('livewire.artikel-table', compact('artikels'))->layout('layouts.app');
     }
 

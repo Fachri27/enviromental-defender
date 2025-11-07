@@ -13,55 +13,58 @@
     $alternateUrl = url(str_replace("/{$locale}/", "/{$alternate}/", request()->getRequestUri()));
     @endphp
 
-    {{-- <title>{{ $meta['title'] }}</title>
+    @php
+    use Illuminate\Support\Str;
+
+    $appName = config('app.name', 'Environmental Defender');
+    $locale = app()->getLocale();
+    $currentPath = request()->path(); // contoh: id/about
+    $pathParts = explode('/', $currentPath);
+    $urlSegment = end($pathParts);
+
+    // Format URL segment ke Title
+    $urlTitle = Str::of($urlSegment)
+    ->replace('-', ' ')
+    ->title(); // contoh: apa-itu-pembela-lingkungan => Apa Itu Pembela Lingkungan
+
+    // Gunakan title/deskripsi default
+    $pageTitle = $pageTitle ?? "$urlTitle | $appName";
+    $pageDescription = $pageDescription ?? "Informasi tentang $urlTitle di $appName.";
+    $pageImage = $pageImage ?? asset('images/logo.png');
+    $pageType = $pageType ?? 'website';
+    $currentUrl = url()->current();
+    @endphp
+
+    <!-- 🌐 Basic Meta -->
+    <title>{{ $meta['title'] }}</title>
     <meta name="description" content="{{ $meta['description'] }}">
+    <meta name="title" content="{{ $meta['title'] }}">
     <link rel="canonical" href="{{ url()->current() }}">
 
-    <link rel="alternate" href="{{ $alternateUrl }}" hreflang="{{ $alternate }}">
-    <link rel="alternate" href="{{ url()->current() }}" hreflang="{{ $locale }}">
-    <link rel="alternate" href="{{ url()->current() }}" hreflang="x-default">
+    <!-- 🔍 Google / Schema.org -->
+    <meta itemprop="name" content="{{ $meta['title'] }}">
+    <meta itemprop="description" content="{{ $meta['description'] }}">
+    <meta itemprop="image" content="{{ $meta['image'] }}">
 
-    <!-- Open Graph -->
-    <meta property="og:locale" content="{{ $locale === 'id' ? 'id_ID' : 'en_US' }}">
+    <!-- 🟦 Open Graph / Facebook / WhatsApp -->
+    <meta property="og:locale" content="{{ app()->getLocale() }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="{{ $meta['type'] ?? 'website' }}">
     <meta property="og:title" content="{{ $meta['title'] }}">
     <meta property="og:description" content="{{ $meta['description'] }}">
     <meta property="og:image" content="{{ $meta['image'] }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="{{ $meta['type'] }}">
+    <meta property="og:image:alt" content="{{ $meta['title'] }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-    <!-- Twitter -->
+    <!-- 🐦 Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ config('app.twitter_handle') ?? 'yourhandle' }}">
     <meta name="twitter:title" content="{{ $meta['title'] }}">
     <meta name="twitter:description" content="{{ $meta['description'] }}">
-    <meta name="twitter:image" content="{{ $meta['image'] }}"> --}}
-
-    <!-- HTML Meta Tags -->
-    <title>{{ $meta['title'] }}</title>
-    <meta name="description"
-        content="{{ $meta['description'] }}" />
-
-    <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="{{ $meta['title'] }}" />
-    <meta itemprop="description"
-        content="{{ $meta['description'] }}" />
-    <meta itemprop="image" content="{{ $meta['image'] }}" />
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:type" content="{{ $meta['type'] }}" />
-    <meta property="og:title" content="{{ $meta['title'] }}" />
-    <meta property="og:description"
-        content="{{ $meta['description'] }}" />
-    <meta property="og:image" content="{{ $meta['image'] }}" />
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ $meta['title'] }}" />
-    <meta name="twitter:description"
-        content="{{ $meta['description'] }}" />
-    <meta name="twitter:image" content="{{ $meta['image'] }}" />
-
-    <!-- Meta Tags Generated via https://heymeta.com -->
+    <meta name="twitter:image" content="{{ $meta['image'] }}">
+    <meta name="twitter:image:alt" content="{{ $meta['title'] }}">
 
     @if (isset($schema))
     <script type="application/ld+json">

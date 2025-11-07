@@ -29,6 +29,11 @@ $users = auth()->user()->role;
                         {{ __('Artikel') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('regulasi.index.v2')" :active="request()->routeIs('regulasi.index.v2')">
+                        {{ __('Regulasi') }}
+                    </x-nav-link>
+                </div>
                 @if ($users === 'admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
@@ -106,6 +111,11 @@ $users = auth()->user()->role;
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('artikel.index')" :active="request()->routeIs('artikel.index')">
                 {{ __('Artikel') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('regulasi.index.v2')" :active="request()->routeIs('regulasi.index.v2')">
+                {{ __('Regulasi') }}
             </x-responsive-nav-link>
         </div>
         @if ($users === 'admin')        

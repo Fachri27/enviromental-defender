@@ -13,7 +13,7 @@
                 <img src="{{ asset('storage/' . $artikel->image) }}" 
                      alt="{{ $artikel->slug }}" 
                      class="w-full max-h-[550px] object-cover shadow-md">
-                <figcaption class="text-sm text-gray-500 mt-2 italic">
+                <figcaption class="text-xs text-gray-500 mt-2 italic">
                     {{ $translation->title }}
                 </figcaption>
             </figure>
@@ -30,8 +30,8 @@
     </header>
 </main> 
 {{-- Isi Artikel --}}
-<article class="prose prose-lg prose-slate md:prose-lg leading-relaxed text-justify md:text-left max-w-4xl mx-auto px-5 md:px-0">
-    {!! $translation?->content !!}
+<article class="prose prose-sm sm:prose-base md:prose-lg lg:prose-base prose-black max-w-3xl mx-auto text-justify md:text-left px-5 leading-relaxed font-serif">
+    {!! $translation->content !!}
 </article>
 <div class="flex justify-center mt-12 mb-20 space-x-2">
     <span class="w-2 h-2 bg-gray-400 rounded-full"></span>

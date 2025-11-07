@@ -8,10 +8,10 @@ class SeoService {
             'en' => 'Environmental Defender'
         ],
         'description' => [
-            'id' => 'Environmental Defender — platform advokasi lingkungan di Indonesia.',
-            'en' => 'Environmental Defender — a platform for environmental advocacy in Indonesia.'
+            'id' => 'Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.',
+            'en' => 'This site, dedicated to ensuring the safety of Environmental Defenders, contains a database of threats to Environmental Defenders, and information relevant to improving their safety.'
         ],
-        'image' => '/image/default-og.jpg',
+        'image' => '/images/default-og.jpg',
         'type' => 'website',
     ];
 

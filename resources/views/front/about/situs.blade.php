@@ -5,7 +5,7 @@
 $locale = app()->getLocale();
 @endphp
 
-<section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:py-16 py-20 px-6 md:px-12">
+<section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:py-16 py-15 px-6 md:px-12">
     <!-- KIRI: Judul -->
     <div class="border-b-2 md:border-b-0 md:border-r-2 border-green-900 md:pr-10">
         <h2 class="text-green-900 font-extrabold text-3xl md:text-4xl leading-tight uppercase">

@@ -9,29 +9,6 @@ use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-    public function show(Resource $resource)
-    {
-        $locale = app()->getLocale();
-
-        // ambil data SEO otomatis dari model
-        $meta = $resource->getSeoData($locale);
-
-        seo()->setLocale($locale)
-            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
-            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
-            ->set('image', $meta['image'])
-            ->set('type', $meta['type']);
-
-        $schema = SchemaHelper::article(
-            $meta['title'],
-            $meta['description'],
-            $meta['image'],
-            $resource->author->name ?? 'Environmental Defender',
-        );
-
-        return view('front.home', compact('resource', 'schema'));
-    }
-
     public function indexHome(Request $request, $locale)
     {
         $search = $request->input('search');
@@ -65,8 +42,29 @@ class ArtikelController extends Controller
             $query->where('locale', $locale);
         }])
             ->where('type', 'database')
-            ->where('status', 'publish')
+            ->where(
+                'status', 'publish')
             ->get();
+
+        $meta = [
+            'title' => __('Enviromental Defender'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/logo.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
 
         // Ambil 1 artikel terbaru per type
         $action = (clone $baseQuery)->where('type', 'action')->latest('published_at')->first();
