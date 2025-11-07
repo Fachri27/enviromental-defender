@@ -9,6 +9,7 @@ class ResourceTable extends Component
 {
     public $search = '';
     public $status;
+    public $type;
     public function render()
     {
         $resources = Resource::with('translations')
@@ -17,6 +18,9 @@ class ResourceTable extends Component
 
                 if ($this->status && $this->status !== 'status') {
                     $query->where('status', $this->status);
+                }
+                if ($this->type && $this->type !== 'type') {
+                    $query->where('type', $this->type);
                 }
             })->paginate(10);
         return view('livewire.admin.resource-table', compact('resources'))->layout('layouts.app');

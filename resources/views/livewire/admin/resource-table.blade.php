@@ -31,6 +31,12 @@
                     <option value="draft">draft</option>
                     <option value="publish">publish</option>
                 </select>
+                <select wire:model.live.debounce.100ms="type"
+                    class="border border-gray-300 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                    <option value="">type</option>
+                    <option value="database">database</option>
+                    <option value="report">report</option>
+                </select>
             </div>
         </div>
 
