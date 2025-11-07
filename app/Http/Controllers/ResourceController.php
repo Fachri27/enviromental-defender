@@ -33,7 +33,7 @@ class ResourceController extends Controller
         $meta = [
             'title' => __('Resources'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
+            'image' => asset('images/new3.png'),
             'type' => 'article',
         ];
 
@@ -66,7 +66,7 @@ class ResourceController extends Controller
         $meta = [
             'title' => __('Resources'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
+            'image' => asset('images/new3.png'),
             'type' => 'article',
         ];
 

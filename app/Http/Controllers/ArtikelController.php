@@ -87,7 +87,7 @@ class ArtikelController extends Controller
         $meta = [
             'title' => __('Cases'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
+            'image' => asset('images/new3.png'),
             'type' => 'article',
         ];
 
@@ -120,7 +120,7 @@ class ArtikelController extends Controller
         $meta = [
             'title' => __('Actions'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
+            'image' => asset('images/new3.png'),
             'type' => 'article',
         ];
 
@@ -153,7 +153,7 @@ class ArtikelController extends Controller
         $meta = [
             'title' => __('Alerta'),
             'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
-            'image' => asset('images/logo.png'),
+            'image' => asset('images/new3.png'),
             'type' => 'article',
         ];
 
