@@ -6,7 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @php
+    use Illuminate\Support\Str;
+
+    $appName = config('app.name', 'CMS Environmental Defender');
+    $locale = app()->getLocale();
+    $currentPath = request()->path(); // contoh: id/about
+    $pathParts = explode('/', $currentPath);
+    $urlSegment = end($pathParts);
+
+    // Format URL segment ke Title
+    $urlTitle = Str::of($urlSegment)
+    ->replace('-', ' ')
+    ->title(); // contoh: apa-itu-pembela-lingkungan => Apa Itu Pembela Lingkungan
+
+    // Gunakan title/deskripsi default
+    $pageTitle = $pageTitle ?? "$urlTitle | $appName";
+    $pageDescription = $pageDescription ?? "Informasi tentang $urlTitle di $appName.";
+    $pageImage = $pageImage ?? asset('images/new3.png');
+    $pageType = $pageType ?? 'website';
+    $currentUrl = url()->current();
+    @endphp
+
+    <!-- 🌐 Basic Meta -->
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDescription }}">
+    <meta name="title" content="{{ $pageType }}">
+    <meta itemprop="image" content="{{ $pageImage }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

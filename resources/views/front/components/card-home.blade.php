@@ -1,63 +1,61 @@
-<div class="max-w-7xl mx-auto px-4 md:px-6 mt-15 md:mt-[580px] md:mb-40 mb-30">
-    <div class="grid md:grid-cols-3 md:gap-8 gap-10">
-        {{-- ACTION --}}
+<div class="md:max-w-7xl mx-auto px-2 md:px-6 mt-15 md:mt-[550px] md:mb-20 mb-10">
+    <div class="grid md:grid-cols-3 gap-8 my-12 px-5">
+        <!-- Card 1 -->
         @if ($action)
-            @php $translation = $action->translations->first(); @endphp
-            <div class="flex flex-col space-y-3">
-                <img src="{{ asset('storage/' . $action->image) }}" 
-                     alt="{{ $translation->title ?? '' }}" 
-                     class="w-full md:h-48 h-55 object-cover rounded-md">
-                <p class="uppercase text-sm font-semibold text-gray-500">action</p>
+        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <img src="{{ asset('storage/'.$action->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
+            <div class="p-6">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $action->type }}</p>
                 <a href="{{ route('artikel.page', $action->slug) }}">
-                    <h2 class="text-xl font-bold text-green-700 leading-snug">
-                        {{ $translation->title ?? '' }}
-                    </h2>
+                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
+                        {{ $action->title }}
+                    </h3>
                 </a>
-                <p class="text-sm text-gray-700 leading-relaxed">
-                    <strong>{{ \Carbon\Carbon::parse($action->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($translation->deskripsi ?? ''), 150) !!}
-                </p>
-            </div>
-        @endif
-
-        {{-- RESOURCES --}}
-        @if ($report)
-            @php $translation = $report->translations->first(); @endphp
-            <div class="flex flex-col space-y-3">
-                <img src="{{ asset('storage/' . $report->image) }}" 
-                     alt="{{ $translation->title ?? '' }}" 
-                     class="w-full md:h-48 h-55 object-cover rounded-md">
-                <p class="uppercase text-sm font-semibold text-gray-500">resources</p>
-                <a href="{{ asset('storage/'. $report->file_type) }}">
-                    <h2 class="text-xl font-bold text-green-700 leading-snug">
-                        {{ $translation->title ?? '' }}
-                    </h2>
-                </a>
-                <p class="text-sm text-gray-700 leading-relaxed">
+                <div class="text-sm text-gray-700 mt-3">
                     <strong>{{ \Carbon\Carbon::parse($report->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($translation->deskripsi ?? ''), 150) !!}
-                </p>
+                    {!! Str::limit(strip_tags($action->deskripsi ?? ''), 150) !!}
+                </div>
             </div>
+        </div>
         @endif
 
-        {{-- CASES --}}
-        @if ($case)
-            @php $translation = $case->translations->first(); @endphp
-            <div class="flex flex-col space-y-3">
-                <img src="{{ asset('storage/' . $case->image) }}" 
-                     alt="{{ $translation->title ?? '' }}" 
-                     class="w-full md:h-48 h-55 md:object-cover rounded-md">
-                <p class="uppercase text-sm font-semibold text-gray-500">cases</p>
-                <a href="{{ route('artikel.page', $case->slug) }}">
-                    <h2 class="text-xl font-bold text-green-700 leading-snug">
-                        {{ $translation->title ?? '' }}
-                    </h2>
+        <!-- Card 2 -->
+        @if ($report)
+        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <img src="{{ asset('storage/'.$report->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
+            <div class="p-6">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $report->type }}</p>
+                <a href="{{ asset('storage/'. $report->slug) }}">
+                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
+                        {{ $report->title }}
+                    </h3>
                 </a>
-                <p class="text-sm text-gray-700 leading-relaxed">
-                    <strong>{{ \Carbon\Carbon::parse($case->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($translation->deskripsi ?? ''), 150) !!}
-                </p>
+                <div class="text-sm text-gray-700 mt-3">
+                    <strong>{{ \Carbon\Carbon::parse($report->published_at)->translatedFormat('F Y') }}</strong> |
+                    {!! Str::limit(strip_tags($report->deskripsi ?? ''), 150) !!}
+                </div>
             </div>
+        </div>
+        @endif
+
+        <!-- Card 3 -->
+        @if ($case)
+        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <img src="{{ asset('storage/'.$case->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
+            <div class="p-6">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $case->type }}</p>
+                <a href="{{ route('artikel.page', $case->slug) }}">
+                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
+                        {{ $case->title }}
+                    </h3>
+                </a>
+                <div class="text-sm text-gray-700 mt-3">
+                    <strong>{{ \Carbon\Carbon::parse($case->published_at)->translatedFormat('F Y') }}</strong> |
+                    {!! Str::limit(strip_tags($case->deskripsi ?? ''), 150) !!}
+                </div>
+            </div>
+        </div>
         @endif
     </div>
+    <div class="max-w-7xl border-b border-gray-300 mx-auto mt-20"></div>
 </div>
