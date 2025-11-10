@@ -12,7 +12,7 @@
                     </h3>
                 </a>
                 <div class="text-sm text-gray-700 mt-3">
-                    <strong>{{ \Carbon\Carbon::parse($report->published_at)->translatedFormat('F Y') }}</strong> |
+                    <strong>{{ \Carbon\Carbon::parse($action->published_at)->translatedFormat('F Y') }}</strong> |
                     {!! Str::limit(strip_tags($action->deskripsi ?? ''), 150) !!}
                 </div>
             </div>
