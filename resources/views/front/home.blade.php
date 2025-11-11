@@ -18,7 +18,7 @@
 </div>
 @include('front.components.card-home')
 
-<div class="w-full py-8 mt-16">
+<div class="w-full mt-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
         <h1 class="text-2xl sm:text-4xl font-bold text-gray-800">
             ENVIRONMENTAL DEFENDER CASES
@@ -57,17 +57,20 @@ $translation = $resource->translations->first();
 </section>
 @else
 {{-- BAGIAN SELANJUTNYA: KONTEN DI TENGAH --}}
-<section class="max-w-6xl mx-auto px-6 py-12 border-b border-gray-100 last:border-none">
-    <h2 class="text-lg sm:text-2xl font-semibold text-center text-gray-800 mb-6">
+<section class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Judul -->
+    <h1 class="text-center text-xl md:text-3xl font-semibold text-gray-900 leading-tight mb-4">
         {{ $translation->title }}
-        <span>
-            {{ \Carbon\Carbon::parse($resource->start_date)->translatedFormat('Y') }}
-        </span>
+    </h1>
+
+    <!-- Info tanggal -->
+    <p class="text-center text-gray-600 text-sm md:text-base mb-10 tracking-wide">
+        (
+        <span>{{ \Carbon\Carbon::parse($resource->start_date)->translatedFormat('Y') }}</span>
         -
-        <span>
-            {{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat('F Y') }}
-        </span>
-    </h2>
+        <span>{{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat('F Y') }}</span>
+        )
+    </p>
 
     <div class="overflow-hidden shadow-sm mb-8">
         <iframe src="{{ $resource->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
@@ -77,31 +80,25 @@ $translation = $resource->translations->first();
     <div class="max-w-4xl mx-auto text-gray-700 text-sm sm:text-base leading-relaxed prose md:text-left text-justify">
         {!! $translation->deskripsi !!}
     </div>
+
+
 </section>
 @endif
 @endforeach
 
 <!-- Tombol Floating -->
-<div 
-    x-data="{
+<div x-data="{
         show: false,
         scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    }"
-    x-init="window.addEventListener('scroll', () => show = window.scrollY > 300)"
->
-    <button 
-        x-show="show"
-        @click="scrollToTop"
-        x-transition.opacity.duration.300ms
-        class="fixed bottom-6 right-6 bg-red-600 text-white p-5 rounded-full shadow-lg 
+    }" x-init="window.addEventListener('scroll', () => show = window.scrollY > 300)">
+    <button x-show="show" @click="scrollToTop" x-transition.opacity.duration.300ms class="fixed bottom-6 right-6 bg-red-600 text-white p-5 rounded-full shadow-lg 
                hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-        aria-label="Back to top"
-    >
+        aria-label="Back to top">
         <!-- Icon panah ke atas -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" 
-             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
         </svg>
     </button>

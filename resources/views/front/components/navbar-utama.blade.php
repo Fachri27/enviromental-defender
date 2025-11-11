@@ -1,11 +1,11 @@
 <div>
     <div
-        class="md:flex hidden py-3 text-center text-sm justify-center text-white bg-red-600 fixed top-0 left-0 w-full z-50">
+        class="md:flex hidden py-3 text-center justify-center text-white bg-red-600 fixed top-0 left-0 w-full z-50">
         ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
     </div>
 
     <nav x-data="{open: false}" class=" bg-red-600 md:bg-white shadow md:pt-10 pb-6">
-        <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-1 text-sm">
+        <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
             <div class="flex space-x-1 text-gray-400">
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}"
                     class="hover:text-green-900 {{ app()->getLocale() === 'en' ? 'font-bold text-red-600' : '' }}">EN</a>
@@ -118,7 +118,7 @@
             </button>
             <!-- Alert text -->
             <a href="/">
-                <p class="ml-3 text-sm px-5 items-center">
+                <p class="ml-3 text-sm px-5 items-center font-bold">
                     ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
                 </p>
             </a>

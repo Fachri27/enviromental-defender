@@ -9,7 +9,7 @@
     @php
     use Illuminate\Support\Str;
 
-    $appName = config('app.name', 'CMS Environmental Defender');
+    $appName = 'CMS Environmental Defender';
     $locale = app()->getLocale();
     $currentPath = request()->path(); // contoh: id/about
     $pathParts = explode('/', $currentPath);
