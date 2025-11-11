@@ -55,7 +55,7 @@
                 {{-- Link --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-600 mb-1">Link</label>
-                    <input type="text" wire:model="link" name="link" x-model="link"
+                    <input type="text" wire:model="link" name="link"
                      class="w-full border border-gray-500 rounded p-2">
                     @error('link') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
                 </div>
