@@ -57,7 +57,7 @@
                 <tbody class="divide-y divide-gray-100">
                     @forelse ($resources as $index => $resource)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="px-4 py-3 text-gray-600">{{ $index + 1 }}</td>
+                        <td class="px-4 py-3 text-gray-600">{{ ($resources->currentPage() - 1) * $resources->perPage() + $index + 1 }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $resource->title }}</td>
                         <td class="px-4 py-3 text-gray-700">{{ $resource->status }}</td>
                         <td class="px-4 py-3 text-gray-700 capitalize">{{ $resource->type }}</td>

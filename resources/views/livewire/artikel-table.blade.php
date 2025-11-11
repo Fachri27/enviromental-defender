@@ -58,7 +58,7 @@
                 <tbody class="divide-y divide-gray-100">
                     @forelse ($artikels as $index => $artikel)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="px-4 py-3 text-gray-600">{{ $index + 1 }}</td>
+                        <td class="px-4 py-3 text-gray-600">{{ ($artikels->currentPage() - 1) * $artikels->perPage() + $index + 1 }}</td>
                         <td class="px-4 py-3 font-medium text-gray-900">{{ $artikel->title }}</td>
                         <td class="px-4 py-3 text-gray-700">{{ $artikel->status }}</td>
                         <td class="px-4 py-3 text-gray-700 capitalize">{{ $artikel->type }}</td>
