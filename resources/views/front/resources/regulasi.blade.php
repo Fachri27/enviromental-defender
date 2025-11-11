@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="max-w-3xl mx-auto px-10 md:px-6 py-8 text-gray-800 md:mt-20 mt-30 mb-20">
+<section class="max-w-3xl mx-auto px-10 md:px-6 py-8 text-gray-800 md:mt-5 mt-10 mb-20 text-justify md:text-left">
     <!-- Paragraf pembuka -->
     @php
         $locale = app()->getLocale();
