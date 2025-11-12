@@ -38,5 +38,7 @@
     <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
     <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
 </div>
+@include('front.components.floating')
+
 @endsection
     

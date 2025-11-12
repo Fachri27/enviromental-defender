@@ -39,5 +39,6 @@
     </ul>
 </section>
 
+@include('front.components.floating')
 
 @endsection

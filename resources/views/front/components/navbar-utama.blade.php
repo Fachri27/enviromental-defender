@@ -1,10 +1,10 @@
 <div>
     <div
-        class="md:flex hidden py-3 text-center justify-center text-white bg-red-600 fixed top-0 left-0 w-full z-50">
+        class="md:flex hidden py-3 text-center justify-center text-white bg-red-700 fixed top-0 left-0 w-full z-50">
         ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
     </div>
 
-    <nav x-data="{open: false}" class=" bg-red-600 md:bg-white shadow md:pt-10 pb-6">
+    <nav x-data="{open: false}" class=" bg-red-700 md:bg-white shadow md:pt-10 pb-6">
         <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
             <div class="flex space-x-1 text-gray-400">
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}"
@@ -22,9 +22,9 @@
                 </a>
             </div>
             {{-- desktop --}}
-            <div class="hidden md:flex items-center font-medium space-x-6 text-green-900">
+            <div class="hidden md:flex items-center font-bold space-x-6 text-green-900">
                 <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" class="flex items-center hover:text-green-600 cursor-pointer">
+                    <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer">
                         about
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" class="flex items-center hover:text-green-600 cursor-pointer">
+                    <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer">
                         resources
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -108,7 +108,7 @@
         {{-- mobile --}}
         <!-- Top bar merah dengan hamburger dan alert text -->
         <div
-            class="md:hidden bg-red-600 text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
+            class="md:hidden bg-red-700 text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
             <button @click="open = !open" class="text-white focus:outline-none ml-5 font-bold">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                     stroke="currentColor" class="size-6 font-bold">
@@ -129,7 +129,7 @@
             x-transition:enter-start="-translate-x-1/2 opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transition-all transform ease-in" x-transition:leave-start="translate-x-0 opacity-100"
             x-transition:leave-end="-translate-x-1/2 opacity-0" @click.away="open = false"
-            class="fixed md:hidden inset-0 z-50 bg-red-600 text-white flex flex-col p-6 space-y-5 w-[75vw]"
+            class="fixed md:hidden inset-0 z-50 bg-red-700 text-white flex flex-col p-6 space-y-5 w-[75vw]"
             style="display: none;">
             <!-- Close button -->
             <button @click="open = false" class="self-start mb-10">

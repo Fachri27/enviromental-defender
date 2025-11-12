@@ -42,4 +42,6 @@
             </div>
         @endforeach
     </div>
+    @include('front.components.floating')
+
 @endsection

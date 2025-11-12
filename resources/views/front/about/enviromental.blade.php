@@ -138,4 +138,6 @@ $locale = app()->getLocale();
     </div>
 </section>
 
+@include('front.components.floating')
+
 @endsection

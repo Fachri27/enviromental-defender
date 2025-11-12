@@ -79,5 +79,6 @@ $locale = app()->getLocale();
         </h2>
     </div>
 </section>
+@include('front.components.floating')
 
 @endsection
