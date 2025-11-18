@@ -102,7 +102,22 @@
                 editor.on('change keyup', () => {
                     self.deskripsi_id = editor.getContent();
                 });
-            }
+            },
+            file_picker_callback(callback, value, meta) {
+                                let cmsURL = '/laravel-filemanager?editor=' + meta.fieldname;
+                                cmsURL += meta.filetype === 'image'
+                                    ? '&type=image'
+                                    : meta.filetype === 'media'
+                                    ? '&type=video'
+                                    : '&type=file';
+                                tinymce.activeEditor.windowManager.openUrl({
+                                    url: cmsURL,
+                                    title: 'File Manager',
+                                    width: window.innerWidth * 0.8,
+                                    height: window.innerHeight * 0.8,
+                                    onMessage: (api, message) => callback(message.url || message.content)
+                                });
+                            }
             });
         }
      }" x-init="initEditor" wire:ignore>
@@ -153,6 +168,21 @@
                         self.deskripsi_en = editor.getContent();
                     });
                 },
+                file_picker_callback(callback, value, meta) {
+                                let cmsURL = '/laravel-filemanager?editor=' + meta.fieldname;
+                                cmsURL += meta.filetype === 'image'
+                                    ? '&type=image'
+                                    : meta.filetype === 'media'
+                                    ? '&type=video'
+                                    : '&type=file';
+                                tinymce.activeEditor.windowManager.openUrl({
+                                    url: cmsURL,
+                                    title: 'File Manager',
+                                    width: window.innerWidth * 0.8,
+                                    height: window.innerHeight * 0.8,
+                                    onMessage: (api, message) => callback(message.url || message.content)
+                                });
+                            }
             });
         }
      }" x-init="initEditor" wire:ignore>
