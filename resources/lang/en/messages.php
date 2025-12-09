@@ -12,4 +12,5 @@ return [
     'action' => 'action',
     'alerta' => 'alerta',
     'search_placeholder' => 'Search...',
+    'text_xample' => 'ALERT! Protecting their customary land, residents of Rempang Island are being repressed by the police'
 ];

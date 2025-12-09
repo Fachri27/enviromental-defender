@@ -4,7 +4,7 @@
 <div>
     <div class="md:flex hidden py-3 items-center text-white bg-red-700 fixed top-0 left-0 w-full z-50">
         <div class="justify-center mx-auto pl-115">
-            ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
+            {{ __('messages.text_xample') }}
         </div>
         <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
             <div class="flex space-x-1 text-black">
@@ -146,7 +146,7 @@
             <div class="flex flex-col space-y-5 text-lg font-semibold">
                 <div x-data="{ dropdown: false }" class="ml-4">
                     <button @click="dropdown = !dropdown" class="flex items-center justify-between w-full">
-                        about
+                        {{ __('messages.about_us') }}
                         <svg xmlns="http://www.w3.org/2000/svg" :class="{'rotate-180': dropdown, 'rotate-0': !dropdown}"
                             class="inline w-4 h-4 ml-1 text-white items-center mt-1 transition-transform duration-200 transform "
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -156,9 +156,9 @@
                     <div x-show="dropdown" x-transition
                         class="mt-2 pl-3 py-3 space-y-2 text-sm bg-white text-green-900 w-full rounded">
                         <a href="{{ route('about.enviromental') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">environmental defender</a>
-                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">situs
-                            ini</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.enviromental_defender') }}</a>
+                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                            {{ __('messages.situs_ini') }}</a>
                     </div>
                 </div>
 
@@ -166,7 +166,7 @@
 
                 <div x-data="{ dropdown: false }" class="ml-4">
                     <button @click="dropdown = !dropdown" class="flex items-center justify-between w-full">
-                        resources
+                        {{ __('messages.resources') }}
                         <svg xmlns="http://www.w3.org/2000/svg" :class="{'rotate-180': dropdown, 'rotate-0': !dropdown}"
                             class="inline w-4 h-4 ml-1 text-white items-center mt-1 transition-transform duration-200 transform"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,21 +176,21 @@
                     <div x-show="dropdown" x-transition
                         class="pl-3 py-3 mt-2 space-y-2 text-sm bg-white text-green-900 w-full rounded">
                         <a href="{{ route('report.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">report</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.report') }}</a>
                         <a href="{{ route('regulasi.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">regulasi</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.regulasi') }}</a>
                         <a href="{{ route('database.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">database</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.database') }}</a>
                     </div>
                 </div>
 
                 <div class="border-b"></div>
 
-                <a href="{{ route('cases.index') }}" class="hover:underline ml-4">cases</a>
+                <a href="{{ route('cases.index') }}" class="hover:underline ml-4">{{ __('messages.cases') }}</a>
                 <div class="border-b"></div>
-                <a href="{{ route('action.index') }}" class="hover:underline ml-4">action</a>
+                <a href="{{ route('action.index') }}" class="hover:underline ml-4">{{ __('messages.action') }}</a>
                 <div class="border-b"></div>
-                <a href="{{ route('alerta.index') }}" class="hover:underline ml-4">alerta</a>
+                <a href="{{ route('alerta.index') }}" class="hover:underline ml-4">{{ __('messages.alerta') }}</a>
 
                 <!-- Search -->
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
