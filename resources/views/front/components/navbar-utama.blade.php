@@ -22,7 +22,7 @@
             {{-- logo --}}
             <div class="hidden md:flex">
                 <a href="/">
-                    <img src="https://environmentaldefender.id/image/logo.png" alt="">
+                    <img src="{{ asset('images/logo.png') }}" alt="">
                 </a>
             </div>
             {{-- desktop --}}
