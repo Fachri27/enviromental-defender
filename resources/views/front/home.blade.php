@@ -47,7 +47,7 @@ $translation = $resource->translations->first();
     </h2>
 </section>
 <section class="w-full mb-12">
-    <iframe src="{{ $resource->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
+    <iframe src="{{ $translation->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
         class="w-full h-[500px] sm:h-[550px]"></iframe>
 
     <div
