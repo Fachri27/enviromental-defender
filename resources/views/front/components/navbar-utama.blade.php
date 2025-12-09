@@ -7,12 +7,12 @@
             ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
         </div>
         <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
-            <div class="flex space-x-1 text-white">
+            <div class="flex space-x-1 text-black">
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}"
-                    class="hover:text-green-500 {{ app()->getLocale() === 'en' ? 'font-bold text-black' : '' }}">EN</a>
+                    class="hover:text-green-500 {{ app()->getLocale() === 'en' ? 'font-bold text-white' : '' }}">EN</a>
                 <span>|</span>
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'id'])) }}"
-                    class="hover:text-green-500 {{ app()->getLocale() === 'id' ? 'font-bold text-black' : '' }}">ID</a>
+                    class="hover:text-green-500 {{ app()->getLocale() === 'id' ? 'font-bold text-white' : '' }}">ID</a>
             </div>
         </div>
     </div>
