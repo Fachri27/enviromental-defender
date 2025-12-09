@@ -67,7 +67,7 @@ $translation = $resource->translations->first();
         (
         <span>{{ \Carbon\Carbon::parse($resource->start_date)->translatedFormat('Y') }}</span>
         -
-        <span>{{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat('F Y') }}</span>
+        <span>{{ \Carbon\Carbon::parse($resource->end_date)->translatedFormat(format: 'j F Y') }}</span>
         )
     </p>
 
