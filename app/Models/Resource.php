@@ -19,7 +19,6 @@ class Resource extends Model
         'file_type',
         'start_date',
         'end_date',
-        'link',
         'user_id',
     ];
 

@@ -73,7 +73,7 @@ $translation = $resource->translations->first();
     </p>
 
     <div class="overflow-hidden shadow-sm mb-8">
-        <iframe src="{{ $resource->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
+        <iframe src="{{ $translation->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
             class="w-full md:h-[500px] h-[400px]"></iframe>
     </div>
 

@@ -258,8 +258,13 @@
                 <div x-show="type === 'database'">
                     {{-- Link --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Link</label>
-                        <input type="text" wire:model="link" class="w-full border border-gray-500 rounded p-2"
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Link ID</label>
+                        <input type="text" wire:model="link_id" class="w-full border border-gray-500 rounded p-2"
+                            placeholder="https://contoh.com/resource">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Link EN</label>
+                        <input type="text" wire:model="link_en" class="w-full border border-gray-500 rounded p-2"
                             placeholder="https://contoh.com/resource">
                     </div>
                 </div>

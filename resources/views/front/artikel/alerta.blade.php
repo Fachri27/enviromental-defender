@@ -13,8 +13,8 @@
             <article class="group max-w-sm overflow-hidden shadow-sm h-full text-white">
                 <!-- Gambar -->
                 <div class="overflow-hidden h-52 sm:h-56 transition-transform transform hover:scale-105">
-                    <div class="w-full md:h-full bg-gray-200 flex items-center justify-cente">
-                        <img src="{{ asset('storage/'. $item->image) }}" alt="{{ $translation->title }}" class="w-full h-full">
+                    <div class="w-full md:h-full bg-gray-200 flex items-center justify-center">
+                        <img src="{{ asset('storage/'. $item->image) }}" alt="{{ $translation->title }}" class="w-full h-full object-cover object-center">
                     </div>
                 </div>
 

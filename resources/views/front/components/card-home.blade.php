@@ -25,7 +25,7 @@
             <img src="{{ asset('storage/'.$report->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
             <div class="p-6">
                 <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $report->type }}</p>
-                <a href="{{ asset('storage/'. $report->slug) }}">
+                <a href="{{ asset('storage/'. $report->file_type) }}">
                     <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
                         {{ $report->title }}
                     </h3>

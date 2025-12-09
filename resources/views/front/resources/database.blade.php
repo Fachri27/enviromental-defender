@@ -82,7 +82,7 @@
 
         <!-- MAP / Embed -->
         <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-            <iframe src="{{ $resource->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
+            <iframe src="{{ $translation->link }}" title="Interactive or visual content" frameborder="0" scrolling="no"
                 class="w-full h-[220px] sm:h-[300px] md:h-[400px] lg:h-[480px] transition-all duration-300 ease-in-out">
             </iframe>
         </div>

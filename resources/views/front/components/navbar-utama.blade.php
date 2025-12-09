@@ -1,19 +1,23 @@
+@php
+    app()->getLocale();
+@endphp
 <div>
-    <div
-        class="md:flex hidden py-3 text-center justify-center text-white bg-red-700 fixed top-0 left-0 w-full z-50">
-        ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
-    </div>
-
-    <nav x-data="{open: false}" class=" bg-red-700 md:bg-white shadow md:pt-10 pb-6">
+    <div class="md:flex hidden py-3 items-center text-white bg-red-700 fixed top-0 left-0 w-full z-50">
+        <div class="justify-center mx-auto pl-115">
+            ALERTA! Melindungi tanah adatnya, warga Pulau Rempang direpresi polisi
+        </div>
         <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
-            <div class="flex space-x-1 text-gray-400">
+            <div class="flex space-x-1 text-white">
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}"
-                    class="hover:text-green-900 {{ app()->getLocale() === 'en' ? 'font-bold text-red-600' : '' }}">EN</a>
+                    class="hover:text-white-500 {{ app()->getLocale() === 'en' ? 'font-bold text-black' : '' }}">EN</a>
                 <span>|</span>
                 <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'id'])) }}"
-                    class="hover:text-green-900 {{ app()->getLocale() === 'id' ? 'font-bold text-red-600' : '' }}">ID</a>
+                    class="hover:text-green-500 {{ app()->getLocale() === 'id' ? 'font-bold text-black' : '' }}">ID</a>
             </div>
         </div>
+    </div>
+
+    <nav x-data="{open: false}" class=" bg-red-700 md:bg-white shadow md:pt-10 pb-6 mt-10">
         <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
             {{-- logo --}}
             <div class="hidden md:flex">
@@ -25,7 +29,7 @@
             <div class="hidden md:flex items-center font-bold space-x-6 text-green-900">
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer">
-                        about
+                        {{ __('messages.about_us') }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -35,14 +39,13 @@
                         class="absolute left-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
                         style="display: none !important">
                         <a href="{{ route('about.enviromental') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">environmental defender</a>
-                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">situs
-                            ini</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.enviromental_defender') }}</a>
+                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.situs_ini') }}</a>
                     </div>
                 </div>
                 <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer">
-                        resources
+                    <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer text-nowrap">
+                        {{ __('messages.resources') }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -52,16 +55,16 @@
                         class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
                         style="display: none !important">
                         <a href="{{ route('report.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">report</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.report') }}</a>
                         <a href="{{ route('regulasi.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">regulasi</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.regulasi') }}</a>
                         <a href="{{ route('database.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">database</a>
+                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.database') }}</a>
                     </div>
                 </div>
-                <a href="{{ route('cases.index') }}" class="hover:border-b py-2">cases</a>
-                <a href="{{ route('action.index') }}" class="hover:border-b py-2">action</a>
-                <a href="{{ route('alerta.index') }}" class="hover:border-b py-2">alerta</a>
+                <a href="{{ route('cases.index') }}" class="hover:border-b py-2">{{ __('messages.cases') }}</a>
+                <a href="{{ route('action.index') }}" class="hover:border-b py-2">{{ __('messages.report') }}</a>
+                <a href="{{ route('alerta.index') }}" class="hover:border-b py-2">{{ __('messages.alerta') }}</a>
 
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
                     class="relative w-full max-w-xs ml-4">
@@ -86,7 +89,7 @@
                     <!-- Loading indicator -->
                     <div x-show="loading" x-transition.opacity
                         class="absolute right-0 -bottom-6 text-xs text-green-700 flex items-center space-x-1">
-                        <span>Mencari</span>
+                        <span>{{ __('messages.search_placeholder') }}</span>
                         <div class="flex space-x-1">
                             <span
                                 class="w-1.5 h-1.5 bg-green-700 rounded-full animate-bounce [animation-delay:-0.3s]"></span>

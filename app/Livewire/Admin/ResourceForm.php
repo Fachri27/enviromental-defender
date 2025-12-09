@@ -15,8 +15,8 @@ class ResourceForm extends Component
     use WithFileUploads;
     public $resource;
     public $resourceId;
-    public $title_id, $title_en;
-    public $deskripsi_id, $deskripsi_en, $type, $status, $link, $image, $old_image, $slug, $file_type, $start_date, $end_date, $old_file_type;
+    public $title_id, $title_en, $link_id, $link_en;
+    public $deskripsi_id, $deskripsi_en, $type, $status, $image, $old_image, $slug, $file_type, $start_date, $end_date, $old_file_type;
 
     public function mount($resourceId = null)
     {
@@ -34,7 +34,8 @@ class ResourceForm extends Component
                 'status' => $this->resource->status,
                 'image' => $this->resource->image,
                 'file_type' => $this->resource->file_type,
-                'link' => $this->resource->link,
+                'link_id' => $idTranslations->link ?? '',
+                'link_en' => $enTranslations->link ?? '',
                 'start_date' => $this->resource->start_date,
                 'end_date' => $this->resource->end_date,
                 'deskripsi_id' => $idTranslations->deskripsi ?? '',
@@ -70,7 +71,6 @@ class ResourceForm extends Component
             'status' => $this->status,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
-            'link' => $this->link,
             'user_id' => auth()->id(),
         ];
 
@@ -121,6 +121,7 @@ class ResourceForm extends Component
                 [
                     'title' => $locale === 'id' ? $this->title_id : $this->title_en,
                     'deskripsi' => $locale === 'id' ? $this->deskripsi_id : $this->deskripsi_en,
+                    'link' => $locale === 'id' ? $this->link_id : $this->link_en,
                 ]
                 );
         }

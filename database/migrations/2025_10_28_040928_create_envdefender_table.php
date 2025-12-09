@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->string('link')->nullable();
             $table->string('file_type')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete(action: 'cascade');
             $table->timestamps();
