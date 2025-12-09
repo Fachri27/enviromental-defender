@@ -9,7 +9,7 @@ $users = auth()->user()->role;
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="https://environmentaldefender.id/image/logo.png" alt="" width="150" height="150">
+                        <img src="{{ asset('images/logo.png') }}" alt="" width="150" height="150">
                     </a>
                 </div>
 

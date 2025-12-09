@@ -5,7 +5,7 @@
 
     <div class="flex justify-center mb-10 mt-5">
         <a href="/">
-            <img src="https://environmentaldefender.id/image/logo.png" alt="" width="150" height="150">
+            <img src="{{ asset('images/logo.png') }}" alt="" width="150" height="150">
         </a>
     </div>
 
