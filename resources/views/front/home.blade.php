@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="w-full h-hero md:h-60 relative">
-    <img src="https://environmentaldefender.id/image/ed-hero.jpg" alt=""
-        class="md:h-[700px] h-[320px] w-full object-cover relative">
+    <img src="{{ asset('images/image.png') }}" alt="" class="md:h-[700px] h-[320px] w-full object-cover relative">
     {{-- <div class="absolute right-0 bottom-0 z-10">
         <img src="https://environmentaldefender.id/image/elemen.png" alt="" class="lg:h-80 h-16">
     </div> --}}
