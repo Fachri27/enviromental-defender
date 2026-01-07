@@ -19,7 +19,7 @@
                 </div>
 
                 <!-- Konten -->
-                <div class="p-5 justify-between min-h-[220px] space-y-5 bg-red-600 md:h-[600px] leading-relaxed">
+                <div class="p-5 justify-between min-h-[220px] space-y-5 bg-[#e3061d] md:h-[600px] leading-relaxed">
                     <div class="font-bold text-xl">
                         {{ $translation->title }}
                     </div>

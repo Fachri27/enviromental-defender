@@ -26,7 +26,7 @@
             <div class="mt-1 w-3 h-3 bg-black rounded-full flex-shrink-0"></div>
             <div>
                 <a href="{{ $item->link }}">
-                    <h3 class="font-semibold text-red-600">
+                    <h3 class="font-semibold text-[#e3061d]">
                         {{ $translation->title }}
                     </h3>
                 </a>

@@ -2,7 +2,7 @@
     app()->getLocale();
 @endphp
 <div>
-    <div class="md:flex hidden py-3 items-center text-white bg-red-700 fixed top-0 left-0 w-full z-50">
+    <div class="md:flex hidden py-3 items-center text-white bg-[#e3061d] fixed top-0 left-0 w-full z-50">
         <div class="justify-center mx-auto pl-115">
             {{ __('messages.text_xample') }}
         </div>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <nav x-data="{open: false}" class=" bg-red-700 md:bg-white shadow md:pt-10 pb-6 mt-10">
+    <nav x-data="{open: false}" class=" bg-[#e3061d] md:bg-white shadow md:pt-10 pb-6 mt-10">
         <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
             {{-- logo --}}
             <div class="hidden md:flex">
@@ -111,7 +111,7 @@
         {{-- mobile --}}
         <!-- Top bar merah dengan hamburger dan alert text -->
         <div
-            class="md:hidden bg-red-700 text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
+            class="md:hidden bg-[#e3061d] text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
             <button @click="open = !open" class="text-white focus:outline-none ml-5 font-bold">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                     stroke="currentColor" class="size-6 font-bold">
@@ -132,7 +132,7 @@
             x-transition:enter-start="-translate-x-1/2 opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transition-all transform ease-in" x-transition:leave-start="translate-x-0 opacity-100"
             x-transition:leave-end="-translate-x-1/2 opacity-0" @click.away="open = false"
-            class="fixed md:hidden inset-0 z-50 bg-red-700 text-white flex flex-col p-6 space-y-5 w-[75vw]"
+            class="fixed md:hidden inset-0 z-50 bg-[#e3061d] text-white flex flex-col p-6 space-y-5 w-[75vw]"
             style="display: none;">
             <!-- Close button -->
             <button @click="open = false" class="self-start mb-10">
