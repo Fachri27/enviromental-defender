@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <a href="{{ route('cases.index') }}" class="hover:border-b py-2">{{ __('messages.cases') }}</a>
-                <a href="{{ route('action.index') }}" class="hover:border-b py-2">{{ __('messages.report') }}</a>
+                <a href="{{ route('action.index') }}" class="hover:border-b py-2">{{ __('messages.action') }}</a>
                 <a href="{{ route('alerta.index') }}" class="hover:border-b py-2">{{ __('messages.alerta') }}</a>
 
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
