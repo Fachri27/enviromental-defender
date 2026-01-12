@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\SchemaHelper;
+use App\Models\Artikel;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 
@@ -84,5 +85,15 @@ class ResourceController extends Controller
         );
 
         return view('front.resources.report', compact('resource', 'locale', 'schema'));
+    }
+
+    public function preview($locale, $slug) {
+        //buat preview
+        $page = Artikel::with('translations')
+            // ->where('page_type', $page_type)
+            ->where('slug', $slug)
+            ->firstOrFail();
+        
+        return view('front.artikel.page-action', compact('page'));
     }
 }

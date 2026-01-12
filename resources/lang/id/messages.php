@@ -12,5 +12,6 @@ return [
     'action' => 'aksi',
     'alerta' => 'alerta',
     'search_placeholder' => 'Cari...',
-    'text_xample' => 'ALERT! Melindungi tanah adat mereka, warga Pulau Rempang direpresi oleh polisi'
+    'text_xample' => 'ALERT! Melindungi tanah adat mereka, warga Pulau Rempang direpresi oleh polisi',
+    'enviromental_defender_cases' => 'KASUS ENVIRONMENTAL DEFENDER'
 ];

@@ -61,6 +61,9 @@ Route::middleware(['auth', 'role:admin,editor'])->group(function () {
     Route::get('/regulasi', RegulasiTable::class)->name('regulasi.index.v2');
     Route::get('/regulasi/create', RegulasiForm::class)->name('regulasi.create');
     Route::get('/regulasi/{regulasiId}/edit', RegulasiForm::class)->name('regulasi.edit');
+    // Route::get('/{locale}/{slug}/preview', [ResourceController::class, 'preview'])
+    //preview artikel
+    Route::get('/{locale}/{slug}/preview', [ArtikelController::class, 'preview'])->name('artikel.preview');
 });
 
 Route::get('/dashboard', function () {

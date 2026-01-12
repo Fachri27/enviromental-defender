@@ -1,5 +1,5 @@
 @php
-    app()->getLocale();
+app()->getLocale();
 @endphp
 <div>
     <div class="md:flex hidden py-3 items-center text-white bg-[#d50c2e] fixed top-0 left-0 w-full z-50">
@@ -38,13 +38,15 @@
                     <div x-show="open" @click.away="open = false" x-transition
                         class="absolute left-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
                         style="display: none !important">
-                        <a href="{{ route('about.enviromental') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.enviromental_defender') }}</a>
-                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.situs_ini') }}</a>
+                        <a href="{{ route('about.enviromental', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.enviromental_defender') }}</a>
+                        <a href="{{ route('about.situs', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.situs_ini') }}</a>
                     </div>
                 </div>
                 <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" class="flex items-center hover:text-green-800 cursor-pointer text-nowrap">
+                    <button @click="open = !open"
+                        class="flex items-center hover:text-green-800 cursor-pointer text-nowrap">
                         {{ __('messages.resources') }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -54,17 +56,17 @@
                     <div x-show="open" @click.away="open = false" x-transition
                         class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
                         style="display: none !important">
-                        <a href="{{ route('report.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.report') }}</a>
-                        <a href="{{ route('regulasi.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.regulasi') }}</a>
-                        <a href="{{ route('database.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.database') }}</a>
+                        <a href="{{ route('report.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.report') }}</a>
+                        <a href="{{ route('regulasi.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.regulasi') }}</a>
+                        <a href="{{ route('database.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.database') }}</a>
                     </div>
                 </div>
-                <a href="{{ route('cases.index') }}" class="hover:border-b py-2">{{ __('messages.cases') }}</a>
-                <a href="{{ route('action.index') }}" class="hover:border-b py-2">{{ __('messages.action') }}</a>
-                <a href="{{ route('alerta.index') }}" class="hover:border-b py-2">{{ __('messages.alerta') }}</a>
+                <a href="{{ route('cases.index', ['locale' => app()->getLocale()]) }}" class="hover:border-b py-2">{{ __('messages.cases') }}</a>
+                <a href="{{ route('action.index', ['locale' => app()->getLocale()]) }}" class="hover:border-b py-2">{{ __('messages.action') }}</a>
+                <a href="{{ route('alerta.index', ['locale' => app()->getLocale()]) }}" class="hover:border-b py-2">{{ __('messages.alerta') }}</a>
 
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
                     class="relative w-full max-w-xs ml-4">
@@ -76,7 +78,8 @@
                                     $refs.form.submit(); 
                                     loading = false;
                                 }, 600);
-                            " placeholder="Search..." class="text-sm px-2 py-1 w-full outline-none bg-transparent">
+                            " placeholder="{{ __('messages.search_placeholder') }}"
+                            class="text-sm px-2 py-1 w-full outline-none bg-transparent">
 
                         <!-- Ikon pencarian -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 mr-2" fill="none"
@@ -155,9 +158,9 @@
                     </button>
                     <div x-show="dropdown" x-transition
                         class="mt-2 pl-3 py-3 space-y-2 text-sm bg-white text-green-900 w-full rounded">
-                        <a href="{{ route('about.enviromental') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.enviromental_defender') }}</a>
-                        <a href="{{ route('about.situs') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                        <a href="{{ route('about.enviromental', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.enviromental_defender') }}</a>
+                        <a href="{{ route('about.situs', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
                             {{ __('messages.situs_ini') }}</a>
                     </div>
                 </div>
@@ -175,23 +178,22 @@
                     </button>
                     <div x-show="dropdown" x-transition
                         class="pl-3 py-3 mt-2 space-y-2 text-sm bg-white text-green-900 w-full rounded">
-                        <a href="{{ route('report.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.report') }}</a>
-                        <a href="{{ route('regulasi.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.regulasi') }}</a>
-                        <a href="{{ route('database.index') }}"
-                            class="block px-4 py-2 text-sm hover:bg-gray-100">{{ __('messages.database') }}</a>
+                        <a href="{{ route('report.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.report') }}</a>
+                        <a href="{{ route('regulasi.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.regulasi') }}</a>
+                        <a href="{{ route('database.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.database') }}</a>
                     </div>
                 </div>
 
                 <div class="border-b"></div>
 
-                <a href="{{ route('cases.index') }}" class="hover:underline ml-4">{{ __('messages.cases') }}</a>
+                <a href="{{ route('cases.index', ['locale' => app()->getLocale()]) }}" class="hover:underline ml-4">{{ __('messages.cases') }}</a>
                 <div class="border-b"></div>
-                <a href="{{ route('action.index') }}" class="hover:underline ml-4">{{ __('messages.action') }}</a>
+                <a href="{{ route('action.index', ['locale' => app()->getLocale()]) }}" class="hover:underline ml-4">{{ __('messages.action') }}</a>
                 <div class="border-b"></div>
-                <a href="{{ route('alerta.index') }}" class="hover:underline ml-4">{{ __('messages.alerta') }}</a>
-
+                <a href="{{ route('alerta.index', ['locale' => app()->getLocale()]) }}" class="hover:underline ml-4">{{ __('messages.alerta') }}</a>
                 <!-- Search -->
                 <div x-data="{ search: '{{ request('search') }}', typing: null, loading: false }"
                     class="relative w-full max-w-xs mt-5">

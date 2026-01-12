@@ -3,11 +3,11 @@
         <!-- Card 1 -->
         @if ($action)
         <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-            <img src="{{ asset('storage/'.$action->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
+            <img src="{{ asset('storage/'.$action->image) }}" alt="Bincang Hukum" class="w-full h-60 object-cover">
             <div class="p-6">
                 <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $action->type }}</p>
                 <a href="{{ route('artikel.page', $action->slug) }}">
-                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
+                    <h3 class="text-xl font-bold text-green-800 hover:text-green-700 transition-colors line-clamp-3">
                         {{ $action->title }}
                     </h3>
                 </a>

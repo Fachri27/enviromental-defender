@@ -20,7 +20,7 @@
 <div class="w-full mt-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
         <h1 class="text-2xl sm:text-4xl font-bold text-gray-800">
-            ENVIRONMENTAL DEFENDER CASES
+            {{ __('messages.enviromental_defender_cases') }}
         </h1>
     </div>
 </div>

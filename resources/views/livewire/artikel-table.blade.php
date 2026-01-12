@@ -67,7 +67,7 @@
                         </td>
                         <td class="px-4 py-3 text-gray-700 capitalize">{{ auth()->user()->name }}</td>
                         <td class="px-4 py-3 text-right space-x-3">
-                            <a href="{{ route('artikel.page', ['locale' => app()->getLocale(), 'slug' => $artikel->slug]) }}">
+                            <a href="{{ route('artikel.preview', ['locale' => app()->getLocale(), 'slug' => $artikel->slug]) }}">
                                 <button class="text-green-600 hover:underline text-sm font-medium">Preview</button>
                             </a>
                             <a href="{{ route('artikel.edit', $artikel->id) }}">
