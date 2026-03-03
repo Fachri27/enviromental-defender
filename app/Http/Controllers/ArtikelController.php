@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\SchemaHelper;
-use App\Models\Artikel;
-use App\Models\Resource;
 use Illuminate\Http\Request;
+use App\Helpers\SchemaHelper;
+use App\Models\{Artikel, Resource};
 
 class ArtikelController extends Controller
 {
@@ -147,6 +146,7 @@ class ArtikelController extends Controller
         }])
             ->where('status', 'publish')
             ->where('type', 'alerta')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         // Title & description manual (karena ini bukan 1 artikel)
