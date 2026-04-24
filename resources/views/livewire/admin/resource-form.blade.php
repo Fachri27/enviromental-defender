@@ -250,6 +250,7 @@
                                     class="w-16 h-16 rounded-full object-cover border">
                                 @endif
                             </div>
+                            @error('image') <p class="text-red-600 text-sm">{{ $message }}</p> @enderror
                     </div>
                     <div class="mt-4">
                         <label class="font-semibold">Upload File ID</label>

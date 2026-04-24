@@ -130,6 +130,12 @@ class ResourceForm extends Component
             $this->pathEn = $this->file_type_en->store('resources/en/import', 'public');
         }
 
+        // file tidak boleh dari 5mb
+        // if ($this->image && $this->image->getSize() > 5 * 1024 * 1024) {
+        //     session()->flash('error', 'Ukuran file maksimal 5MB.');
+        //     return;
+        // }
+
         // ✅ Upload & buat meta image
         if ($this->image instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile) {
 
