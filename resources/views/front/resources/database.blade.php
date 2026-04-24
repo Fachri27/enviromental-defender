@@ -64,6 +64,9 @@
             </p>
         </div>
     </section> --}}
+    {{-- <h2 class="text-sm md:text-xl font-semibold text-green-800">
+        {{ __('messages.database') }}
+    </h2> --}}
 
     <section class="max-w-3xl md:max-w-5xl lg:max-w-7xl mx-auto md:px-8 mt-12 mb-20">
         <!-- Judul -->

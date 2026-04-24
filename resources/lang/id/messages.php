@@ -13,5 +13,6 @@ return [
     'alerta' => 'alerta',
     'search_placeholder' => 'Cari...',
     'text_xample' => 'ALERT! Melindungi tanah adat mereka, warga Pulau Rempang direpresi oleh polisi',
-    'enviromental_defender_cases' => 'KASUS ENVIRONMENTAL DEFENDER'
+    'enviromental_defender_cases' => 'KASUS ENVIRONMENTAL DEFENDER',
+    'press_rilis' => 'press rilis'
 ];

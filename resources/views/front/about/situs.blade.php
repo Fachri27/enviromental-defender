@@ -8,7 +8,7 @@ $locale = app()->getLocale();
 <section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:py-16 py-15 px-6 md:px-12">
     <!-- KIRI: Judul -->
     <div class="border-b-2 md:border-b-0 md:border-r-2 border-green-900 md:pr-10">
-        <h2 class="text-green-900 font-extrabold text-3xl md:text-4xl leading-tight uppercase">
+        <h2 class="text-green-900 font-extrabold text-2xl md:text-3xl leading-tight uppercase">
             @if($locale == 'id')
             TENTANG KAMI
             @else
@@ -40,9 +40,22 @@ $locale = app()->getLocale();
         </h2>
     </div>
 
+    
+
+    <!-- KANAN: Konten -->
+    <div class="md:pr-10 hidden md:block border-b-2 md:border-b-0 md:border-r-2 border-green-900">
+        <h2 class="text-green-900 font-extrabold text-2xl md:text-3xl leading-tight uppercase">
+            @if($locale == 'id')
+            APA YANG KAMI KERJAKAN
+            @else
+            WHAT WE DO
+            @endif
+        </h2>
+    </div>
+
     <!-- KIRI: Judul -->
     <div
-        class="prose prose-sm max-w-none text-justify text-gray-800 leading-relaxed pr-10 md:border-b-0 md:border-r-2 border-green-900">
+        class="prose prose-sm max-w-none text-justify text-gray-800 leading-relaxed pr-10">
 
         @if($locale == 'id')
         <p>
@@ -66,17 +79,6 @@ $locale = app()->getLocale();
             Considering the weak protections afforded by the law and government institutions, environmental defender safety can be enhanced by environmental defenders themselves through pertinent awareness raising, knowledge, and skills. Accordingly, Auriga Nusantara actively networks and exchanges knowledge with other environmental defenders, including on preparing <a href="https://auriga.or.id/cms/uploads/pdf_id/report/6/7/protokol_keamanan_faweb_1_9_id.pdf">security protocols for environmental defenders.</a>
         </p>
         @endif
-    </div>
-
-    <!-- KANAN: Konten -->
-    <div class="md:pr-10 hidden md:block">
-        <h2 class="text-green-900 font-extrabold text-3xl md:text-4xl leading-tight uppercase">
-            @if($locale == 'id')
-            APA YANG KAMI KERJAKAN
-            @else
-            WHAT WE DO
-            @endif
-        </h2>
     </div>
 </section>
 @include('front.components.floating')

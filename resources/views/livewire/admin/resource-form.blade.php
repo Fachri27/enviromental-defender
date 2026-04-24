@@ -217,6 +217,7 @@
                             <option value="">Pilih Type</option>
                             <option value="report">Report</option>
                             <option value="database">Database</option>
+                            <option value="press">Press Rilis</option>
                         </select>
                     </div>
 
@@ -250,8 +251,44 @@
                             </div>
                     </div>
                     <div class="mt-4">
-                        <label class="font-semibold">Upload File</label>
-                        <input type="file" wire:model="file_type" accept=".pdf,.docx" class="w-full border rounded p-2 cursor-pointer">
+                        <label class="font-semibold">Upload File ID</label>
+                    
+                        <input
+                            type="file"
+                            wire:model="file_type_id"
+                            accept=".pdf,.docx"
+                            class="w-full border rounded p-2 cursor-pointer">
+                    
+                        @if($old_file_type)
+                            <div class="mt-2 text-sm text-gray-600">
+                                File saat ini:
+                                <a href="{{ asset('storage/' . $old_file_type) }}"
+                                   target="_blank"
+                                   class="text-blue-600 underline">
+                                   Lihat File Lama
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="mt-4">
+                        <label class="font-semibold">Upload File ID</label>
+                    
+                        <input
+                            type="file"
+                            wire:model="file_type_en"
+                            accept=".pdf,.docx"
+                            class="w-full border rounded p-2 cursor-pointer">
+                    
+                        @if($old_file_type_en)
+                            <div class="mt-2 text-sm text-gray-600">
+                                File saat ini:
+                                <a href="{{ asset('storage/' . $old_file_type_en) }}"
+                                   target="_blank"
+                                   class="text-blue-600 underline">
+                                   Lihat File Lama
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -266,6 +303,39 @@
                         <label class="block text-sm font-medium text-gray-600 mb-1">Link EN</label>
                         <input type="text" wire:model="link_en" class="w-full border border-gray-500 rounded p-2"
                             placeholder="https://contoh.com/resource">
+                    </div>
+                </div>
+
+                <div x-show="type === 'press'">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Gambar</label>
+                        <input type="file" wire:model="image"
+                            class="w-full border rounded p-2 cursor-pointer"
+                            accept=".jpeg,.jpg,.png,.gif">
+                            <div class="mt-3">
+                                @if ($image)
+                                {{-- Preview gambar baru --}}
+                                <img src="{{ $image->temporaryUrl() }}" alt="New Upload Preview"
+                                    class="w-16 h-16 rounded-full object-cover border">
+                                @elseif ($old_image)
+                                {{-- Preview gambar lama --}}
+                                <img src="{{ asset('storage/' . $old_image) }}" alt="Current Image"
+                                    class="w-16 h-16 rounded-full object-cover border">
+                                @endif
+                            </div>
+                    </div>
+                    <div>
+                        {{-- <h3 class="font-semibold mb-3">Content</h3> --}}
+
+                        <div>
+                            {{-- editor_id --}}
+                            @includeWhen(true, 'front.components.tinymce-content-id')
+                        </div>
+
+                        <div>
+                            {{-- editor_en --}}
+                            @includeWhen(true, 'front.components.tinymce-content-en')
+                        </div>
                     </div>
                 </div>
 

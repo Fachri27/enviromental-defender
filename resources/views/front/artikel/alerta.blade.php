@@ -2,8 +2,13 @@
 
 @section('content')
 <div>
+    <div class="max-w-7xl mx-auto mt-10">
+        <h2 class="text-sm md:text-xl font-semibold text-green-800">
+            {{ __('messages.alerta') }}
+        </h2>
+    </div>
     {{-- image --}}
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-5 md:mt-20 mt-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:mt-10 mt-20">
     @foreach ($alerta as $item)
     @php
     $translation = $item->translations->first();

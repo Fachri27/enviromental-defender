@@ -15,6 +15,8 @@ class ResourceTranslation extends Model
         'title',
         'deskripsi',
         'link',
+        'file_type',
+        'content',
     ];
 
     public function resource()

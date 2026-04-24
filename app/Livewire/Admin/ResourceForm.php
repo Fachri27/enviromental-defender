@@ -2,21 +2,21 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Resource;
-use App\Models\ResourceTranslation;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\{Resource, ResourceTranslation};
 use Intervention\Image\ImageManager;
-use Livewire\Component;
-use Livewire\WithFileUploads;
+use Livewire\{Component, WithFileUploads};
 
 class ResourceForm extends Component
 {
     use WithFileUploads;
     public $resource;
     public $resourceId;
-    public $title_id, $title_en, $link_id, $link_en;
-    public $deskripsi_id, $deskripsi_en, $type, $status, $image, $old_image, $slug, $file_type, $start_date, $end_date, $old_file_type;
+    public $pathId = null;
+    public $pathEn = null;
+    public $title_id, $title_en, $link_id, $link_en, $content_id, $content_en;
+    public $deskripsi_id, $deskripsi_en, $type, $status, $image, $old_image, $slug, $file_type_id, $file_type_en, $start_date, $end_date, $old_file_type, $old_file_type_en;
 
     public function mount($resourceId = null)
     {
@@ -33,19 +33,23 @@ class ResourceForm extends Component
                 'type' => $this->resource->type,
                 'status' => $this->resource->status,
                 'image' => $this->resource->image,
-                'file_type' => $this->resource->file_type,
+                'file_type_id' => $this->resource->file_type_id,
+                'file_type_en' => $this->resource->file_type_en,
                 'link_id' => $idTranslations->link ?? '',
                 'link_en' => $enTranslations->link ?? '',
                 'start_date' => $this->resource->start_date,
                 'end_date' => $this->resource->end_date,
                 'deskripsi_id' => $idTranslations->deskripsi ?? '',
                 'deskripsi_en' => $enTranslations->deskripsi ?? '',
+                'content_id' => $idTranslations->content ?? '',
+                'content_en' => $enTranslations->content ?? '',
             ]);
 
             $this->old_image = $this->resource->image;
             $this->image = null;
             $this->old_file_type = $this->resource->file_type;
-            $this->file_type = null;
+            $this->old_file_type_en = $this->resource->file_type;
+            $this->file_type_id = null;
         }
     }
 
@@ -57,12 +61,11 @@ class ResourceForm extends Component
         $this->validate([
             'title_id' => 'required|string|max:255',
             'title_en' => 'required|string|max:255',
-            'type' => 'required|in:report,database',
+            'type' => 'required|in:report,database,press',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,PNG|max:5048',
             'status' => 'required|in:draft,publish',
-            'file_type' => 'nullable|file|mimes:docx,pdf|max:10240',
         ]);
 
         $data = [
@@ -74,9 +77,14 @@ class ResourceForm extends Component
             'user_id' => auth()->id(),
         ];
 
-        if ($this->file_type) {
-            $path = $this->file_type->store('resources/import', 'public');
-            $data['file_type'] = $path;
+        if ($this->file_type_id) {
+            $pathId = $this->file_type_id->store('resources/id/import', 'public');
+            // $data['file_type_id'] = $pathId;
+        }
+
+        if ($this->file_type_en) {
+            $pathEn = $this->file_type_en->store('resources/en/import', 'public');
+            // $data['file_type_en'] = $pathEn;
         }
 
         // ✅ Upload & buat meta image
@@ -122,6 +130,8 @@ class ResourceForm extends Component
                     'title' => $locale === 'id' ? $this->title_id : $this->title_en,
                     'deskripsi' => $locale === 'id' ? $this->deskripsi_id : $this->deskripsi_en,
                     'link' => $locale === 'id' ? $this->link_id : $this->link_en,
+                    'file_type' => $locale === 'id' ? $this->pathId : $this->pathEn,
+                    'content' => $locale === 'id' ? $this->content_id : $this->content_en,
                 ]
                 );
         }

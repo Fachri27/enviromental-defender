@@ -1,10 +1,16 @@
 @php
 app()->getLocale();
+$translation =
+    $latestAlerta?->translations->where('locale', app()->getLocale())->first()
+    ?? $latestAlerta?->translations->where('locale', 'id')->first()
+    ?? $latestAlerta?->translations->first();
+
+$judulAlerta = $translation?->title;
 @endphp
 <div>
     <div class="md:flex hidden py-3 items-center text-white bg-[#d50c2e] fixed top-0 left-0 w-full z-50">
         <div class="justify-center mx-auto pl-115">
-            {{ __('messages.text_xample') }}
+            ALERTA! {{ $judulAlerta ?? 'Belum ada berita terbaru' }}
         </div>
         <div class="hidden md:flex justify-end items-center max-w-7xl mx-auto px-5 py-2 text-sm">
             <div class="flex space-x-1 text-black">
@@ -62,6 +68,8 @@ app()->getLocale();
                             __('messages.regulasi') }}</a>
                         <a href="{{ route('database.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
                             __('messages.database') }}</a>
+                        <a href="{{ route('press.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.press_rilis') }}</a>
                     </div>
                 </div>
                 <a href="{{ route('cases.index', ['locale' => app()->getLocale()]) }}" class="hover:border-b py-2">{{ __('messages.cases') }}</a>
@@ -184,6 +192,8 @@ app()->getLocale();
                             __('messages.regulasi') }}</a>
                         <a href="{{ route('database.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
                             __('messages.database') }}</a>
+                        <a href="{{ route('press.index', ['locale' => app()->getLocale()]) }}" class="block px-4 py-2 text-sm hover:bg-gray-100">{{
+                            __('messages.press_rilis') }}</a>
                     </div>
                 </div>
 

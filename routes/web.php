@@ -38,6 +38,9 @@ Route::group([
     Route::get('page/resource/database', [ResourceController::class, 'showData'])->name('database.index');
     Route::get('page/resource/report', [ResourceController::class, 'showReport'])->name('report.index');
     Route::get('page/resource/regulasi', [RegulasiController::class, 'index'])->name('regulasi.index');
+    Route::get('page/resource/press-rilis', [ResourceController::class, 'showPressRilis'])->name('press.index');
+    Route::get('page/press-rilis/{slug}', [ResourceController::class, 'pressPreview'])->name('press.preview');
+
 
     //artikel
     Route::get('page/cases', [ArtikelController::class, 'showCases'])->name('cases.index');

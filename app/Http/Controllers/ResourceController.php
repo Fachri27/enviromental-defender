@@ -87,6 +87,50 @@ class ResourceController extends Controller
         return view('front.resources.report', compact('resource', 'locale', 'schema'));
     }
 
+    public function showPressRilis($locale)
+    {
+        $press = Resource::with(['translations' => function ($query) use ($locale) {
+            $query->where('locale', $locale);
+        }])
+            ->where('status', 'publish')
+            ->where('type', 'press')
+            ->get();
+
+         // Title & description manual (karena ini bukan 1 artikel)
+         $meta = [
+            'title' => __('Alerta'),
+            'description' => __('Situs ini didedikasikan untuk peningkatan keselamatan Pembela Lingkungan. Memuat database ancaman terhadap Pembela Lingkungan, dan berbagai informasi yang relevan dengan perbaikan keselamatannya.'),
+            'image' => asset('images/new3.png'),
+            'type' => 'article',
+        ];
+
+        seo()->setLocale($locale)
+            ->set('title', ['id' => $meta['title'], 'en' => $meta['title']])
+            ->set('description', ['id' => $meta['description'], 'en' => $meta['description']])
+            ->set('image', $meta['image'])
+            ->set('type', $meta['type']);
+
+        $schema = SchemaHelper::article(
+            $meta['title'],
+            $meta['description'],
+            $meta['image'],
+            'Environmental Defender',
+        );
+
+        return view('front.artikel.press-rilis', compact('press'));
+    }
+
+    public function pressPreview($locale, $slug) {
+        $pressRilis = Resource::with(relations: ['translations' => function ($query) use ($locale) {
+            $query->where('locale', $locale);
+        }])
+            ->where('slug', $slug)
+            ->where('status', 'publish')
+            ->firstOrFail();
+
+        return view('front.artikel.page-press', compact('pressRilis'));
+    }
+
     public function preview($locale, $slug) {
         //buat preview
         $page = Artikel::with('translations')
@@ -94,6 +138,6 @@ class ResourceController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
         
-        return view('front.artikel.page-action', compact('page'));
+        return view('front.artikel.page-press', compact('page'));
     }
 }

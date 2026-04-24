@@ -8,7 +8,7 @@ $locale = app()->getLocale();
 <section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:py-16 py-20 px-6 md:px-12">
     <!-- KIRI: Judul -->
     <div class="border-b-2 md:border-b-0 md:border-r-2 border-green-900 md:pr-10">
-        <h2 class="text-green-900 font-extrabold text-3xl md:text-4xl leading-tight uppercase">
+        <h2 class="text-green-900 font-extrabold text-2xl md:text-3xl leading-tight uppercase">
             @if($locale == 'id')
             Apa Itu Pembela Lingkungan
             @else
@@ -92,9 +92,22 @@ $locale = app()->getLocale();
             @endif
         </h2>
     </div>
+    
+
+    <!-- KANAN: Konten -->
+    <div class="md:pr-10 hidden md:block md:border-b-0 md:border-r-2 border-green-900">
+        <h2 class="text-green-900 font-extrabold text-2xl md:text-3xl leading-tight uppercase">
+            @if($locale == 'id')
+            SIAPA YANG DISEBUT ENVIRONMENTAL DEFENDER
+            @else
+            WHO DO WE LABEL ENVIRONMENTAL DEFENDER
+            @endif
+        </h2>
+    </div>
+
     <!-- KIRI: Judul -->
     <div
-        class="prose prose-sm max-w-none text-justify text-gray-800 leading-relaxed pr-10 md:border-b-0 md:border-r-2 border-green-900">
+        class="prose prose-sm max-w-none text-justify text-gray-800 leading-relaxed pr-10">
 
         @if($locale == 'id')
         <p>
@@ -124,17 +137,6 @@ $locale = app()->getLocale();
             which after <a href="https://www.universal-rights.org/the-un-declaration-on-human-rights-defenders-its-history-and-drafting-process/#_ftn2">13 years of negotiations</a>, was adopted by the United Nations General Assembly on 9 December 1998.
         </p>
         @endif
-    </div>
-
-    <!-- KANAN: Konten -->
-    <div class="md:pr-10 hidden md:block">
-        <h2 class="text-green-900 font-extrabold text-3xl md:text-4xl leading-tight uppercase">
-            @if($locale == 'id')
-            SIAPA YANG DISEBUT ENVIRONMENTAL DEFENDER
-            @else
-            WHO DO WE LABEL ENVIRONMENTAL DEFENDER
-            @endif
-        </h2>
     </div>
 </section>
 

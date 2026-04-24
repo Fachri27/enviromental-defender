@@ -44,6 +44,14 @@ class ArtikelController extends Controller
             ->where(
                 'status', 'publish')
             ->get();
+        
+        $latestAlerta = Artikel::with(['translations' => function ($query) use ($locale) {
+            $query->where('locale', $locale);
+        }])
+            ->where('type', 'alerta')
+            ->where('status', 'publish')
+            ->latest('created_at')
+            ->first();
 
         $meta = [
             'title' => __('Enviromental Defender'),
@@ -70,7 +78,7 @@ class ArtikelController extends Controller
         $report = (clone $resources)->where('type', 'report')->latest('start_date')->first();
         $case = (clone $baseQuery)->where('type', 'case')->latest('published_at')->first();
 
-        return view('front.home', compact('action', 'report', 'case', 'databases', 'search'));
+        return view('front.home', compact('action', 'report', 'case', 'databases', 'search', 'latestAlerta'));
     }
 
     public function showCases($locale)

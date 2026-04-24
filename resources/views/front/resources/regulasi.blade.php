@@ -7,6 +7,9 @@
     @php
         $locale = app()->getLocale();
     @endphp
+    <h2 class="text-sm md:text-xl font-semibold text-green-800">
+        {{ __('messages.regulasi') }}
+    </h2><br>
     <p class="text-sm leading-relaxed mb-6">
         @if ($locale == 'id')
         Meski belum ada regulasi spesifik yang secara tegas dan lugas menjamin dan atau mengatur perlindungan terhadap pembela lingkungan, namun di berbagai regulasi tersirat mengenainya. Di antaranya:

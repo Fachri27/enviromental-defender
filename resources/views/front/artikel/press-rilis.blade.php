@@ -4,13 +4,14 @@
 <div>
     <div class="max-w-7xl mx-auto mt-10">
         <h2 class="text-sm md:text-xl font-semibold text-green-800">
-            {{ __('messages.action') }}
+            {{ __('messages.press_rilis') }}
         </h2>
     </div>
     {{-- Grid Artikel --}}
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 items-stretch">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6  mt-10 items-stretch">
+        
 
-        @foreach ($actions as $action)
+        @foreach ($press as $action)
         @php
             $translation = $action->translations->first();
         @endphp
@@ -48,7 +49,7 @@
                     <!-- Link selalu di bawah -->
                     <div class="mt-auto pt-4">
                         <a
-                            href="{{ route('artikel.page', $action->slug) }}"
+                            href="{{ route('press.preview', $action->slug) }}"
                             class="text-green-700 font-medium hover:underline"
                         >
                             Baca selengkapnya →
