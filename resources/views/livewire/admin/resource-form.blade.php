@@ -226,6 +226,7 @@
                     <div>
                         <label class="block text-sm w-1/2 font-medium text-gray-600 mb-1">Status</label>
                         <select wire:model="status" class="w-full border border-gray-500 rounded p-2">
+                            <option value="">Pilih Status</option>
                             <option value="draft">Draft</option>
                             <option value="publish">Publish</option>
                         </select>
@@ -271,7 +272,7 @@
                         @endif
                     </div>
                     <div class="mt-4">
-                        <label class="font-semibold">Upload File ID</label>
+                        <label class="font-semibold">Upload File EN</label>
                     
                         <input
                             type="file"

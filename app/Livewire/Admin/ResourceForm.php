@@ -2,25 +2,67 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Resource;
+use App\Models\ResourceTranslation;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use App\Models\{Resource, ResourceTranslation};
 use Intervention\Image\ImageManager;
-use Livewire\{Component, WithFileUploads};
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ResourceForm extends Component
 {
     use WithFileUploads;
+
     public $resource;
+
     public $resourceId;
+
     public $pathId = null;
+
     public $pathEn = null;
-    public $title_id, $title_en, $link_id, $link_en, $content_id, $content_en;
-    public $deskripsi_id, $deskripsi_en, $type, $status, $image, $old_image, $slug, $file_type_id, $file_type_en, $start_date, $end_date, $old_file_type, $old_file_type_en;
+
+    public $title_id;
+
+    public $title_en;
+
+    public $link_id;
+
+    public $link_en;
+
+    public $content_id;
+
+    public $content_en;
+
+    public $deskripsi_id;
+
+    public $deskripsi_en;
+
+    public $type;
+
+    public $status;
+
+    public $image;
+
+    public $old_image;
+
+    public $slug;
+
+    public $file_type_id;
+
+    public $file_type_en;
+
+    public $start_date;
+
+    public $end_date;
+
+    public $old_file_type;
+
+    public $old_file_type_en;
 
     public function mount($resourceId = null)
     {
-        if($resourceId) {
+        if ($resourceId) {
             $this->resource = Resource::with('translations')->findOrFail($resourceId);
 
             $idTranslations = $this->resource->translations->firstWhere('locale', 'id');
@@ -47,13 +89,13 @@ class ResourceForm extends Component
 
             $this->old_image = $this->resource->image;
             $this->image = null;
-            $this->old_file_type = $this->resource->file_type;
-            $this->old_file_type_en = $this->resource->file_type;
+            $this->old_file_type = $idTranslations->file_type ?? null;
+            $this->old_file_type_en = $enTranslations->file_type ?? null;
             $this->file_type_id = null;
         }
     }
 
-    public function save() 
+    public function save()
     {
         // dd('save called');
         $resource = $this->resource ?? new Resource;
@@ -77,14 +119,15 @@ class ResourceForm extends Component
             'user_id' => auth()->id(),
         ];
 
+        $this->pathId = $this->old_file_type;
+        $this->pathEn = $this->old_file_type_en;
+
         if ($this->file_type_id) {
-            $pathId = $this->file_type_id->store('resources/id/import', 'public');
-            // $data['file_type_id'] = $pathId;
+            $this->pathId = $this->file_type_id->store('resources/id/import', 'public');
         }
 
         if ($this->file_type_en) {
-            $pathEn = $this->file_type_en->store('resources/en/import', 'public');
-            // $data['file_type_en'] = $pathEn;
+            $this->pathEn = $this->file_type_en->store('resources/en/import', 'public');
         }
 
         // ✅ Upload & buat meta image
@@ -123,7 +166,7 @@ class ResourceForm extends Component
         $resource->fill($data)->save();
         $resource->refresh();
 
-        foreach(['id', 'en'] as $locale) {
+        foreach (['id', 'en'] as $locale) {
             ResourceTranslation::updateOrCreate(
                 ['resource_id' => $resource->id, 'locale' => $locale],
                 [
@@ -133,7 +176,7 @@ class ResourceForm extends Component
                     'file_type' => $locale === 'id' ? $this->pathId : $this->pathEn,
                     'content' => $locale === 'id' ? $this->content_id : $this->content_en,
                 ]
-                );
+            );
         }
 
         // dd($this->resource);
@@ -143,6 +186,7 @@ class ResourceForm extends Component
         return redirect()->route('resource.index');
 
     }
+
     public function render()
     {
         return view('livewire.admin.resource-form')->layout('layouts.app');
