@@ -8,7 +8,7 @@ $translation =
 $judulAlerta = $translation?->title;
 @endphp
 <div>
-    <div class="md:flex hidden py-3 items-center text-white bg-[#d50c2e] fixed top-0 left-0 w-full z-50">
+    <div class="md:flex hidden py-3 items-center text-white bg-[#e3061c] fixed top-0 left-0 w-full z-50">
         <div class="justify-center mx-auto pl-115">
             ALERTA! {{ $judulAlerta ?? 'Belum ada berita terbaru' }}
         </div>
@@ -23,7 +23,7 @@ $judulAlerta = $translation?->title;
         </div>
     </div>
 
-    <nav x-data="{open: false}" class=" bg-[#d50c2e] md:bg-white shadow md:pt-10 pb-6 mt-10">
+    <nav x-data="{open: false}" class=" bg-[#e3061c] md:bg-white shadow md:pt-10 pb-6 mt-10">
         <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
             {{-- logo --}}
             <div class="hidden md:flex">
@@ -82,8 +82,8 @@ $judulAlerta = $translation?->title;
                         <input type="text" name="search" x-model="search" x-on:input="
                                 loading = true;
                                 clearTimeout(typing);
-                                typing = setTimeout(() => { 
-                                    $refs.form.submit(); 
+                                typing = setTimeout(() => {
+                                    $refs.form.submit();
                                     loading = false;
                                 }, 600);
                             " placeholder="{{ __('messages.search_placeholder') }}"
@@ -122,7 +122,7 @@ $judulAlerta = $translation?->title;
         {{-- mobile --}}
         <!-- Top bar merah dengan hamburger dan alert text -->
         <div
-            class="md:hidden bg-[#d50c2e] text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
+            class="md:hidden bg-[#e3061c] text-white flex items-center justify-between fixed top-0 left-0 w-full z-50 py-6">
             <button @click="open = !open" class="text-white focus:outline-none ml-5 font-bold">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                     stroke="currentColor" class="size-6 font-bold">
@@ -143,7 +143,7 @@ $judulAlerta = $translation?->title;
             x-transition:enter-start="-translate-x-1/2 opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transition-all transform ease-in" x-transition:leave-start="translate-x-0 opacity-100"
             x-transition:leave-end="-translate-x-1/2 opacity-0" @click.away="open = false"
-            class="fixed md:hidden inset-0 z-50 bg-[#d50c2e] text-white flex flex-col p-6 space-y-5 w-[75vw]"
+            class="fixed md:hidden inset-0 z-50 bg-[#e3061c] text-white flex flex-col p-6 space-y-5 w-[75vw]"
             style="display: none;">
             <!-- Close button -->
             <button @click="open = false" class="self-start mb-10">
@@ -211,8 +211,8 @@ $judulAlerta = $translation?->title;
                         <input type="text" name="search" x-model="search" x-on:input="
                                 loading = true;
                                 clearTimeout(typing);
-                                typing = setTimeout(() => { 
-                                    $refs.form.submit(); 
+                                typing = setTimeout(() => {
+                                    $refs.form.submit();
                                     loading = false;
                                 }, 600);
                             " placeholder="Search..."
