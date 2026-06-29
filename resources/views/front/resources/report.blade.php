@@ -12,19 +12,19 @@
 
             <div class="flex flex-col md:flex-row items-start gap-6 bg-white  p-5 border-b">
                 <!-- Gambar sampul -->
-                <img 
-                    src="{{ asset('storage/' . $data->image) }}" 
-                    alt="Cover dokumen" 
+                <img
+                    src="{{ asset('storage/' . $data->image) }}"
+                    alt="Cover dokumen"
                     class="w-full md:w-1/3 md:h-full object-cover rounded shadow-sm"
                 />
 
                 <!-- Konten kanan -->
                 <div class="flex-1">
-                    <h2 class="text-lg md:text-3xl font-semibold text-green-800">
+                    <h2 class="text-xl font-semibold mb-2 leading-snug font-sans text-green-800">
                         {{ $translation->title }}
                     </h2>
 
-                    <div class="prose prose-lg text-sm md:text-lg text-gray-700 leading-relaxed mb-4">
+                    <div class="prose text-[#2B5343] prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular mb-4">
                         {!! $translation->deskripsi !!}
                     </div>
 

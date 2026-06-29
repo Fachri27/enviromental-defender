@@ -106,7 +106,7 @@ class ResourceForm extends Component
             'type' => 'required|in:report,database,press',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,PNG|max:5048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,PNG|max:5500',
             'status' => 'required|in:draft,publish',
         ]);
 

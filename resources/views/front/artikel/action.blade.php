@@ -46,14 +46,14 @@
                     </div>
 
                     <!-- Link selalu di bawah -->
-                    <div class="mt-auto pt-4">
+                    <!--<div class="mt-auto pt-4">
                         <a
                             href="{{ route('artikel.page', $action->slug) }}"
                             class="text-green-700 font-medium hover:underline"
                         >
                             Baca selengkapnya →
                         </a>
-                    </div>
+                    </div>-->
 
                 </div>
             </article>

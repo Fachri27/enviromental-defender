@@ -10,8 +10,8 @@
     <header class="text-center mb-20">
         @if ($artikel->image)
             <figure class="mb-8">
-                <img src="{{ asset('storage/' . $artikel->image) }}" 
-                     alt="{{ $artikel->slug }}" 
+                <img src="{{ asset('storage/' . $artikel->image) }}"
+                     alt="{{ $artikel->slug }}"
                      class="w-full max-h-[550px] object-cover shadow-md">
                 <figcaption class="text-xs text-gray-500 mt-2 italic">
                     {{ $translation->title }}
@@ -24,16 +24,34 @@
         </h1>
 
         {{-- Deskripsi / ringkasan --}}
-        <div class="max-w-2xl mx-auto mt-6 text-gray-600 italic leading-relaxed">
+        <div class="max-w-2xl mx-auto mt-6 text-[#2B5343] text-base tracking-[0.020em] space-y-4 poppins-regular" style="font-family: 'Poppins', sans-serif !important;">
             {!! $translation->deskripsi !!}
         </div>
     </header>
 
 </main>
 {{-- Isi Artikel --}}
-<article class="prose prose-sm sm:prose-base md:prose-lg lg:prose-base prose-black max-w-3xl mx-auto text-justify md:text-left px-5 leading-relaxed font-serif">
+<div class="
+    prose
+    max-w-2xl mx-auto
+    px-5
+    poppins-regular
+
+    md:text-md sm:text-base text-[16px]
+    text-left
+
+    prose-p:tracking-[0.020em]
+    prose-p:my-[1em]
+
+    prose-h2:text-[24px]
+    prose-h2:mt-8 prose-h2:mb-4 prose-h2:font-bold
+
+    prose-h3:text-[21px]
+    prose-h3:mt-6 prose-h3:mb-3 prose-h3:font-semibold
+
+    ">
     {!! $translation->content !!}
-</article>
+</div>
 <div class="flex justify-center mt-12 mb-20 space-x-2">
     <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
     <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
@@ -42,5 +60,3 @@
 @include('front.components.floating')
 
 @endsection
-
-    

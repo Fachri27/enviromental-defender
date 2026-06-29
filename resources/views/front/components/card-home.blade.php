@@ -1,61 +1,87 @@
-<div class="md:max-w-7xl mx-auto px-2 md:px-6 mt-15 md:mt-[550px] md:mb-20 mb-10">
-    <div class="grid md:grid-cols-3 gap-8 my-12 px-5">
-        <!-- Card 1 -->
+<div class="max-w-screen-xl mx-auto px-2 md:px-6 mt-15 md:mt-[550px] md:mb-20 mb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-20 px-5">
+
         @if ($action)
-        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-            <img src="{{ asset('storage/'.$action->image) }}" alt="Bincang Hukum" class="w-full h-60 object-cover">
-            <div class="p-6">
-                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $action->type }}</p>
-                <a href="{{ route('artikel.page', $action->slug) }}">
-                    <h3 class="text-xl font-bold text-green-800 hover:text-green-700 transition-colors line-clamp-3">
-                        {{ $action->title }}
-                    </h3>
-                </a>
-                <div class="text-sm text-gray-700 mt-3">
-                    <strong>{{ \Carbon\Carbon::parse($action->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($action->deskripsi ?? ''), 150) !!}
+        <div class="flex flex-col gap-2">
+            <!--<time class="text-xs text-gray-500">
+                {{ \Carbon\Carbon::parse($action->published_at)->translatedFormat('j F Y') }}
+            </time>-->
+            <div class="group bg-white shadow-sm hover:shadow-xl flex flex-col min-h-[28rem] overflow-hidden">
+                <div class="overflow-hidden aspect-[16/9]">
+                    <img src="{{ asset('storage/'.$action->image) }}" alt="{{ $action->title }}"
+                         class="w-full h-full object-cover object-[center_20%] transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="p-4 flex flex-col flex-grow text-[#2B5343]">
+                    <div class="text-xs text-gray-500 mb-2">
+                        ACTION
+                    </div>
+                    <a href="{{ route('artikel.page', $action->slug) }}">
+                        <h3 class="text-xl font-semibold mb-2 leading-snug font-sans">
+                            {{ $action->title }}
+                        </h3>
+                    </a>
+                    <div class="prose-sm text-[#2B5343] max-w-none prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular flex-grow">
+                        {!! Str::limit(strip_tags($action->deskripsi ?? ''), 150) !!}
+                    </div>
                 </div>
             </div>
         </div>
         @endif
 
-        <!-- Card 2 -->
         @if ($report)
-        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-            <img src="{{ asset('storage/'.$report->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
-            <div class="p-6">
-                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $report->type }}</p>
-                <a href="{{ asset('storage/'. $report->file_type) }}">
-                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
-                        {{ $report->title }}
-                    </h3>
-                </a>
-                <div class="text-sm text-gray-700 mt-3">
-                    <strong>{{ \Carbon\Carbon::parse($report->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($report->deskripsi ?? ''), 150) !!}
+        <div class="flex flex-col gap-2">
+            <!--<time class="text-xs text-gray-500">
+                {{ \Carbon\Carbon::parse($report->published_at)->translatedFormat('j F Y') }}
+            </time>-->
+            <div class="group bg-white shadow-sm hover:shadow-xl flex flex-col min-h-[28rem] overflow-hidden">
+                <div class="overflow-hidden aspect-[16/9]">
+                    <img src="{{ asset('storage/'.$report->image) }}" alt="{{ $report->title }}"
+                         class="w-full h-full object-cover object-[center_10%] transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="p-4 flex flex-col flex-grow text-[#2B5343]">
+                    <div class="text-xs text-gray-500 mb-2">
+                        REPORT
+                    </div>
+                    <a href="{{ asset('storage/' . ($report->translation?->file_type ?? $report->translations->first()->file_type ?? '')) }}" target="_blank">
+                        <h3 class="text-xl font-semibold mb-2 leading-snug font-sans">
+                            {{ $report->title }}
+                        </h3>
+                    </a>
+                    <div class="prose-sm text-[#2B5343] max-w-none prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular flex-grow">
+                        {!! Str::limit(strip_tags($report->deskripsi ?? ''), 150) !!}
+                    </div>
                 </div>
             </div>
         </div>
         @endif
 
-        <!-- Card 3 -->
         @if ($case)
-        <div class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-            <img src="{{ asset('storage/'.$case->image) }}" alt="Bincang Hukum" class="w-full h-52 object-cover">
-            <div class="p-6">
-                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $case->type }}</p>
-                <a href="{{ route('artikel.page', $case->slug) }}">
-                    <h3 class="text-2xl font-bold text-green-800 hover:text-green-700 transition-colors">
-                        {{ $case->title }}
-                    </h3>
-                </a>
-                <div class="text-sm text-gray-700 mt-3">
-                    <strong>{{ \Carbon\Carbon::parse($case->published_at)->translatedFormat('F Y') }}</strong> |
-                    {!! Str::limit(strip_tags($case->deskripsi ?? ''), 150) !!}
+        <div class="flex flex-col gap-2">
+            <!--<time class="text-xs text-gray-500">
+                {{ \Carbon\Carbon::parse($case->published_at)->translatedFormat('j F Y') }}
+            </time>-->
+            <div class="group bg-white shadow-sm hover:shadow-xl flex flex-col min-h-[28rem] overflow-hidden">
+                <div class="overflow-hidden aspect-[16/9]">
+                    <img src="{{ asset('storage/'.$case->image) }}" alt="{{ $case->title }}"
+                         class="w-full h-full object-cover object-[center_20%] transition-transform duration-300 group-hover:scale-105">
+                </div>
+                <div class="p-4 flex flex-col flex-grow text-[#2B5343]">
+                    <div class="text-xs text-gray-500 mb-2">
+                        CASE
+                    </div>
+                    <a href="{{ route('artikel.page', $case->slug) }}">
+                        <h3 class="text-xl font-semibold mb-2 leading-snug font-sans">
+                            {{ $case->title }}
+                        </h3>
+                    </a>
+                    <div class="prose-sm text-[#2B5343] max-w-none prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular flex-grow">
+                        {!! Str::limit(strip_tags($case->deskripsi ?? ''), 150) !!}
+                    </div>
                 </div>
             </div>
         </div>
         @endif
+
     </div>
     <div class="max-w-7xl border-b border-gray-300 mx-auto mt-20"></div>
 </div>
