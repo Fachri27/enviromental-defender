@@ -39,7 +39,7 @@
                     </h3>
                 </a>
                 <div class="prose-sm text-[#2B5343] max-w-none prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular flex-1">
-                    {!! Str::limit(strip_tags($report->deskripsi ?? ''), 150) !!}
+                    {!! Str::limit(strip_tags($report->deskripsi ?? ''), 300) !!}
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                     </h3>
                 </a>
                 <div class="prose-sm text-[#2B5343] max-w-none prose-p:tracking-[0.020em] prose-p:my-[1em] poppins-regular flex-1">
-                    {!! Str::limit(strip_tags($case->deskripsi ?? ''), 150) !!}
+                    {!! Str::limit(strip_tags($case->deskripsi ?? ''), 300) !!}
                 </div>
             </div>
         </div>
